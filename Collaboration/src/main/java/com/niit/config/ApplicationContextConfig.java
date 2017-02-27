@@ -14,6 +14,14 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.dao.UserDAO;
+import com.niit.daoimpl.UserDAOImpl;
+import com.niit.model.Blog;
+import com.niit.model.Event;
+import com.niit.model.Forum;
+import com.niit.model.Friend;
+import com.niit.model.Job;
+import com.niit.model.User;
 
 
 @Configuration
@@ -24,7 +32,7 @@ public class ApplicationContextConfig {
 	public DataSource getDataSource() {
 	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
 	    dataSource.setDriverClassName("org.h2.Driver");
-	dataSource.setUrl("jdbc:h2:tcp://localhost/~/shopping2");
+	dataSource.setUrl("jdbc:h2:tcp://localhost/~/collab");
 	    dataSource.setUsername("sa");
 	dataSource.setPassword("");
 	 
@@ -44,10 +52,15 @@ public class ApplicationContextConfig {
 	 LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 	 sessionBuilder.addProperties(getHibernateProperties());
 	sessionBuilder.addAnnotatedClasses(User.class);
-	
+	sessionBuilder.addAnnotatedClasses(Event.class);
+	sessionBuilder.addAnnotatedClasses(Forum.class);
+	sessionBuilder.addAnnotatedClasses(Friend.class);
+	sessionBuilder.addAnnotatedClasses(Job.class);
+	sessionBuilder.addAnnotatedClasses(Blog.class);
 	
      return sessionBuilder.buildSessionFactory();
 	}
+	
 	@Autowired
 	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager(
@@ -56,4 +69,9 @@ public class ApplicationContextConfig {
 	            sessionFactory);
 	return transactionManager;
 	}
+	@Autowired
+	   @Bean(name = "userDao")
+	   public UserDAO getCategoryDao(SessionFactory sessionFactory) {
+	   return new UserDAOImpl(sessionFactory);
+	   }
 }

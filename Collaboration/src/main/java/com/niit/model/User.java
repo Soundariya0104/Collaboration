@@ -1,5 +1,7 @@
 package com.niit.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,103 +10,76 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="C_USER_DETAIL")
+@Table(name="User")
 @Component
-public class User {
-
+public class User extends BaseDomain implements Serializable{
+	
 	@Id
-	private String id;
-	
-	private String name;
-	
+	private String username;
+	@Column
+	private String firstname;
+	@Column
+	private String secondname;
+	@Column
+	private String passsword;
+	@Column
 	private String email;
-	
-	private String address;
-	
+	@Column
 	private String mobile;
-	
-	private String role;
-    
-	private String password;
-	
-	@Column(name="is_online")
-	private char isOnline;
-	
+	@Column
 	private char status;
+	@Column
+	private char is_online;
 	
 	
-	public String getId() {
-		return id;
+	
+	
+	public String getPasssword() {
+		return passsword;
 	}
-
-	public void setId(String id) {
-		this.id = id;
+	public void setPasssword(String passsword) {
+		this.passsword = passsword;
 	}
-
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public char getIsOnline() {
-		return isOnline;
-	}
-
-	public void setIsOnline(char isOnline) {
-		this.isOnline = isOnline;
-	}
-
 	public char getStatus() {
 		return status;
 	}
-
 	public void setStatus(char status) {
 		this.status = status;
 	}
-
-	
-	
+	public char getIs_online() {
+		return is_online;
+	}
+	public void setIs_online(char is_online) {
+		this.is_online = is_online;
+	}
+	public String getFirstname() {
+		return firstname;
+	}
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	public String getSecondname() {
+		return secondname;
+	}
+	public void setSecondname(String secondname) {
+		this.secondname = secondname;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 }
