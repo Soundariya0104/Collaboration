@@ -26,7 +26,7 @@ public class BlogController {
 		return blogDAO.getAllBlog();
 	}
 	
-	@PutMapping("/approveblog/{blogID}")
+	@PutMapping("/approveblog/{blogid}")
 	public Blog approveblog(@PathVariable("blogid")int blogid){
 		blog=blogDAO.getBlog(blogid);
 		blog.setBlogstatus('A');

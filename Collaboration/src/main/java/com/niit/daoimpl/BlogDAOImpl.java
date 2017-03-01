@@ -39,7 +39,7 @@ public class BlogDAOImpl implements BlogDAO{
 	
 	//------------------------------------------------------GET all BLOG of by user---------------------------------------------------------------
 	public List<Blog> getAllblogs(String username){
-		String hql="from BlogModel where username='"+username+"'";
+		String hql="from Blog where username='"+username+"'";
 	Query query = sessionFactory.getCurrentSession().createQuery(hql);
 return query.list();
 	}

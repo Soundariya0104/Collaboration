@@ -48,15 +48,11 @@ public class UserController {
 		
 		}else{
 			user.setErrorCode("200");
-			user.setErrorMessage("You aer succesfully logged in ....");
+			user.setErrorMessage("You are succesfully logged in ....");
 		}
 return new ResponseEntity<User>(user, HttpStatus.OK);
 }
-	
-
-	
-	
-	
+		
 	@PostMapping(value="/register")
 	public ResponseEntity<User> Register(@RequestBody User user){
 		if(userDAO.get(user.getUsername())==null){

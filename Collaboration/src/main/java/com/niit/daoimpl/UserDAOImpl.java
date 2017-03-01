@@ -43,10 +43,10 @@ return sessionFactory.getCurrentSession().get(User.class, username);
 	//-----------------------------------------------------login------------------------------------------------------------------------------------------------------------		
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Transactional
-	public User validate(String userid, String password) {
+	public User validate(String username, String password) {
 		System.out.println("hii");
 		
-	String hql="from User where id='"+userid+"'and password='"+password+"'";
+	String hql="from User where id='"+username+"'and password='"+password+"'";
 	System.out.println("hii1");
 	
 	Query<User> query=sessionFactory.getCurrentSession().createQuery(hql);

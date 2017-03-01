@@ -21,7 +21,7 @@ public class User extends BaseDomain implements Serializable{
 	@Column
 	private String secondname;
 	@Column
-	private String passsword;
+	private String password;
 	@Column
 	private String email;
 	@Column
@@ -34,11 +34,11 @@ public class User extends BaseDomain implements Serializable{
 	
 	
 	
-	public String getPasssword() {
-		return passsword;
+	public String getPassword() {
+		return password;
 	}
 	public void setPasssword(String passsword) {
-		this.passsword = passsword;
+		this.password = passsword;
 	}
 	public String getUsername() {
 		return username;
