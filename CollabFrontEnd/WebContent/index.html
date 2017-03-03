@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+  
+
+<!-- <script src="resources/angular.js"></script> -->
+<!-- <script src="resources/angular-route.js"></script> -->
+ 
+</head>
+<body ng-app="myApp" ng-controller="UserController">
+
+  <a href="#/login">Login</a>
+    <a href="#/blog">Blog</a>
+    <a href="#/about">About</a>
+
+    <div ng-view></div>
+
+	
+	
+	<script src="app.js"></script>
+	<script src="UserController.js"></script>
+	<script src="UserService.js"></script>
+	
+
+</body>
+
+
+</html>
