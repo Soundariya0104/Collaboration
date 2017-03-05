@@ -23,9 +23,8 @@ app.factory('UserService', ['$http', '$q','$rootScope', function($http, $q,$root
         
         
             
-            authenticate: function(user){
-          	 
-                return $http.get(BASE_URL+'/validate',user)
+            authenticate: function(user){ 	 
+                return $http.post(BASE_URL+'/validate',user)
                         .then(
                                 function(response){
                                     return response.data;   //user json object

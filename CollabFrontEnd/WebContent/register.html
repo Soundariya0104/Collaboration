@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div ng-controller="UserController as ctrl">
+
+	<form name="form" ng-submit="ctrl.register()" role="form">
+				
+<label for="">Username</label> 
+<input type="text"	name="username" id="username" class="form-control"
+					ng-model="ctrl.user.username" required /> 					
+		<br>
+<label for="">FirstName</label> 
+<input type="text"	name="firstname" id="firstname" class="form-control"
+					ng-model="ctrl.user.firstname" required /> 					
+		<br>
+<label for="">Secondname</label> 
+<input type="text"	name="secondname" id="secondname" class="form-control"
+					ng-model="ctrl.user.secondname" required /> 					
+		<br>
+<label for="">Email</label> 
+<input type="text"	name="email" id="email" class="form-control"
+					ng-model="ctrl.user.email" required /> 					
+		<br>
+<label for="">Mobile</label> 
+<input type="text"	name="mobile" id="mobile" class="form-control"
+					ng-model="ctrl.user.mobile" required /> 					
+		<br>
+
+<label for="">Password</label> <input type="password"
+		name="password" id="password" class="form-control"
+		ng-model="ctrl.user.password" required /> 
+			<br>			
+	<button type="submit"		
+					class="btn btn-primary">Login</button>
+				<a href="#/register" class="btn btn-link">Register</a>
+		</form>
+	
+</div>
+
+
+</body>
+</html>

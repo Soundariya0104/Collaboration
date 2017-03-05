@@ -1,7 +1,5 @@
 package com.niit.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="User")
 @Component
-public class User extends BaseDomain implements Serializable{
+public class User extends BaseDomain{
 	
 	@Id
 	private String username;
@@ -37,8 +35,8 @@ public class User extends BaseDomain implements Serializable{
 	public String getPassword() {
 		return password;
 	}
-	public void setPasssword(String passsword) {
-		this.password = passsword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getUsername() {
 		return username;

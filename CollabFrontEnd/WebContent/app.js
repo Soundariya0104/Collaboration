@@ -7,5 +7,13 @@ app.config(function($routeProvider) {
     templateUrl : 'login.html',
     controller  : 'UserController'
   })
-  
+  .when('/register', {
+	    templateUrl : 'register.html',
+	    controller  : 'UserController'
+	  })
+	  .when('/addblog', {
+		    templateUrl : 'addblog.html',
+		    controller  : 'UserController'
+		  })
+	  
 });
