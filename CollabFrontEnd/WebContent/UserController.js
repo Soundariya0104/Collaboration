@@ -13,23 +13,6 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 							 $scope.orderByMe = function(x) {
 							        $scope.myOrderBy = x;
 							    }
-					
-
-//							 this.fetchAllUsers = function() {
-//								console.log("fetchAllUsers...")
-//								UserService
-//										.fetchAllUsers()
-//										.then(
-//												function(d) {
-//													self.users = d;
-//												},
-//												function(errResponse) {
-//													console
-//															.error('Error while fetching Users');
-//												});
-//							};
-							
-							//self.fatchAllUsers();
 
 							self.createUser = function(user) {
 								UserService
@@ -77,17 +60,9 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 														self.user.username = "";
 														self.user.password = "";
 
-													} else { //valid credentials
-																
-//																self.fetchAllUsers(); 
+													} else { 
 																alert(self.user.errorMessage)
-														
-//														$rootScope.currentUser = self.user
-//                                                     	$cookieStore.put('currentUser', self.user);
-//														
-//														$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.currentUser; 
-////														$location.path('/chat_forum');
-
+											
 													}
 
 												},

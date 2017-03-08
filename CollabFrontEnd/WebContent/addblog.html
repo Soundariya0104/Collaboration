@@ -6,23 +6,25 @@
 </head>
 <body>
 
-<div ng-controller="UserController as ctrl">
+<div ng-controller="BlogController as ctrl">
 
 	
 	<form name="form" ng-submit="ctrl.addblog()" role="form">
 		
-<label for="username">Username</label> 
-<input type="text"	name="username" id="username" class="form-control"
-					ng-model="ctrl.user.username" required /> 					
+<label for="">Blog title</label> 
+<input type="text"	name="blogtitle" id="blogtitle" class="form-control"
+					ng-model="ctrl.blogModel.blogtitle" required /> 					
 		
-
-<label for="password">Password</label> <input type="password"
-		name="password" id="password" class="form-control"
-		ng-model="ctrl.user.password" required /> 
+<br><br>
+<label for="">Blog description</label>
+ <textarea 
+		name="blogdescription" id="blogdescription" class="form-control"
+		ng-model="ctrl.blogModel.blogdescription" required  cols="30" rows="10"/> </textarea>
 			
+			<br>
 	<button type="submit"		
-					class="btn btn-primary">Login</button>
-				<a href="#/register" class="btn btn-link">Register</a>
+					>Add blog</button>
+				
 		</form>
 	
 </div>

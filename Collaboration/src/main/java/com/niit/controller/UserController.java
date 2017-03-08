@@ -40,41 +40,18 @@ public class UserController {
 		user.setErrorCode("200");
 		user.setErrorMessage("User is available");
 			return new ResponseEntity <List<User>>(userobjlist,HttpStatus.OK);
-		}
-	
-	
-	
-	
-	
-	
-//	
-//	@GetMapping("/validate/{username}/{password}")
-//	public ResponseEntity<UserModel> validateCredentials(@PathVariable("username")String username, @PathVariable("password") String password){
-//		
-//		if(userDAO.validate(username, password) == null){
-//			userModel=new UserModel();
-//			userModel.setErrorCode("404");
-//			userModel.setErrorMessage("Invalid Credential..password..plese try again");
-//		
-//		}else{
-//			userModel.setErrorCode("200");
-//			userModel.setErrorMessage("You aer succesfully logged in ....");
-//		}
-//return new ResponseEntity<UserModel>(userModel, HttpStatus.OK);
-//}
-//	
-	
+		}	
 	@RequestMapping(value = "/validate", method = RequestMethod.POST)
 	public ResponseEntity<User> validateCredentials(@RequestBody User user){
 		
 		if(userDAO.validate(user.getUsername(), user.getPassword()) == null){
 			user=new User();
 			user.setErrorCode("404");
-			user.setErrorMessage("Invalid Credential..password..plese try again");
+			user.setErrorMessage("Invalid Credential..password..please try again");
 			
 		}else{
 			user.setErrorCode("200");
-			user.setErrorMessage("You aer succesfully logged in ....");
+			user.setErrorMessage("You are successfully logged in ....");
 
 				}
 return new ResponseEntity<User>(user, HttpStatus.OK);
@@ -95,12 +72,12 @@ return new ResponseEntity<User>(user, HttpStatus.OK);
 		
 }
 	@GetMapping("/hello")
-	public String rajesh(){
+	public String Hello(){
 		userDAO.save(user);
 		user.setErrorCode("200");
 		user.setErrorMessage("Successfully registered");
 	
-		return "hwllo rajesh, how u doing";
+		return "hello";
 	}
 	
 	@GetMapping("/getUser/{username}")
