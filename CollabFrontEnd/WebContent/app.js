@@ -15,5 +15,16 @@ app.config(function($routeProvider) {
 		    templateUrl : 'addblog.html',
 		    controller  : 'UserController'
 		  })
-	  
+		  .when('/chat', {
+    templateUrl : 'chat.html',
+    controller  : 'ChatController'
+  })
+	  .when('/searchfriend', {
+    templateUrl : 'searchfriend.html',
+    controller  : 'FriendController'
+  })
+  .when('/viewfriend', {
+    templateUrl : 'viewfriend.html',
+    controller  : 'FriendController'
+  })
 });

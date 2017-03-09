@@ -1,7 +1,7 @@
 app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScope',function($scope, BlogService,$location,$routeParams,$rootScope) {
 	console.log("inside BlogController...")
           var self = this;
-          self.blogModel={blogname:'',blogdescription:'',username:'',dateTime:'',status:'',blogreason:''};
+          self.blog={blogname:'',blogdescription:'',username:'',dateTime:'',status:'',blogreason:''};
           self.blogs=[];
           
           
@@ -33,8 +33,8 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
                        );
           };
             
-          self.createBlog = function(blogModel){
-              BlogService.createBlog(blogModel)
+          self.createBlog = function(blog){
+              BlogService.createBlog(blog)
                       .then(
                     		  
                     		  function(d) {
@@ -120,7 +120,7 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
  
           self.addblog = function() {
            
-                  self.createBlog(self.blogModel);
+                  self.createBlog(self.blog);
             
           };
                
@@ -128,7 +128,7 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
               console.log('id to be edited', id);
               for(var i = 0; i < self.blogs.length; i++){
                   if(self.blogs[i].id === id) {
-                     self.blogModel = angular.copy(self.blogs[i]);
+                     self.blog = angular.copy(self.blogs[i]);
                      break;
                   }
               }
@@ -136,7 +136,7 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
                
           self.remove = function(id){
               console.log('id to be deleted', id);
-              if(self.blogModel.id === id) {//clean form if the blog to be deleted is shown there.
+              if(self.blog.id === id) {//clean form if the blog to be deleted is shown there.
                  self.reset();
               }
               self.deleteBlog(id);

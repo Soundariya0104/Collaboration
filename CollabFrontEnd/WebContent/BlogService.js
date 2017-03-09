@@ -2,10 +2,10 @@ app.factory('BlogService', ['$http', '$q','$rootScope', function($http, $q,$root
 	
 	console.log("inside BlogService...")
 	
-	var BASE_URL='http://localhost:8081/CollabrationBackend'
+	var BASE_URL='http://localhost:8080/Collaboration/'
     return {
          
-            fetchAllBlogs: function() {
+            fetchAllBlogs: function() {                                   //fetch all blogs
                     return $http.get(BASE_URL+'/blogs')
                             .then(
                                     function(response){
@@ -18,7 +18,7 @@ app.factory('BlogService', ['$http', '$q','$rootScope', function($http, $q,$root
                             );
             },
              
-            createBlog: function(blog){
+            createBlog: function(blog){                                  //creating blog
                     return $http.post(BASE_URL+'/createblog', blog)
                             .then(
                                     function(response){
@@ -31,7 +31,7 @@ app.factory('BlogService', ['$http', '$q','$rootScope', function($http, $q,$root
                             );
             },
              
-            updateBlog: function(blog, id){
+            updateBlog: function(blog, id){                               //updating blog
                     return $http.put(BASE_URL+'/blog/'+id, blog)
                             .then(
                                     function(response){

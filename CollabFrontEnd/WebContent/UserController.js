@@ -28,20 +28,7 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 													
 												});
 							};							
-							self.createblog = function(user) {
-								UserService
-										.createblog(user)
-										.then(
-												function(d)
-												{
-													alert("Thank you for registration")
-												},
-												function(errResponse) {
-													console
-													alert("not registered")
 													
-												});
-							};							
 
 							self.authenticate = function(user) {
 								console.log("authenticate...")
@@ -97,15 +84,6 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 								}
 								self.reset();
 							};
-
-
-							self.adddblog = function() {
-								{
-									self.createblog(self.user);
-								}
-								self.reset();
-							};
-
 						
 						} ]);
 
