@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div ng-controller="BlogConrtoller as ctrl">
+List of Blog<br>
+<div ng-repeat="bloglist in ctrl.bloglist">
+<a href="#" ng-click="ctrl.getblogbyname(bloglistl.blogname)"> 
+Blog Title: {{bloglist.blogname}}-Blog Description:{{bloglist.blogdescription}}</a>
+</div>
+</div>
+</body>
+</html>
