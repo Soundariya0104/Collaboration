@@ -1,0 +1,30 @@
+<div ng-controller="JobController as ctrl">
+
+	
+	<form name="form" ng-submit="ctrl.addjob()" role="form">
+		
+<label for="">job title</label> 
+<input type="text"	 class="form-control"
+					ng-model="ctrl.jobModel.jobname" required /> 		
+
+				
+
+<input type="hidden" 	value="currentUser.username" name="username" id="username" class="form-control"
+					ng-model="ctrl.jobModel.username"  /> 					
+		
+
+<label for="">job content</label>
+ <textarea 
+		name="jobdescription" id="jobdescription" class="form-control"
+		ng-model="ctrl.jobModel.jobdescription" required  cols="50" rows="10"> </textarea>
+			
+			<br>
+	<button type="submit"		
+					class="btn btn-primary">Add job</button>
+				
+		</form>
+	job page:{{currentUser.username}}-name<br>
+<div ng-repeat="joblist in ctrl.jobs">
+<a  href="#" ng-click="ctrl.getJob(joblist.jobname)"> job Title: {{joblist.jobname}}    -----------------------------------post by :{{joblist.usename}}---------------- </a>
+</div>
+</div>
