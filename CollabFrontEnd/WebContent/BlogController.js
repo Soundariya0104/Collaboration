@@ -1,70 +1,72 @@
 app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScope',function($scope, BlogService,$location,$routeParams,$rootScope) {
 	console.log("inside BlogController...")
           var self = this;
-          self.blog={blogname:'',blogdescription:'',username:'',dateTime:'',status:'',blogreason:''};
+          self.blog={blogname:'',blogdescription:'',username:'',blogdateTime:'',blogstatus:'',blogreason:''};
           self.blogs=[];
+          self.blogs1=[];
           
           
-         self.getSelectedBlog = getBlog
-          
-          function getBlog(id){
-        	  BlogService.getBlog(id)
-                  .then(
-                               function(d) {
-                                     //self.blog = d;
-                                     $location.path('/view_blog'); 
+         self.getBlog = getblog
+
+//-------------------------------------------------------------------------GET BLOG ---------------------------------------------------------------------------------------
+          function getblog(blogname){
+        	  BlogService.getblog(blogname)
+                  .then(  
+                		       function(d) {
+                            	   console.log('inside getselected')
+                                   
+                            	   self.blogs1 = d;
+                            	   console.log(d)
+                            	   
+                                     $location.path('/viewblog'); 
                                },
                                 function(errResponse){
-                                    console.error('Error while fetching Blogs');
+                                    console.error('Error while get Blogs controller');
                                 }
                        );
           };
           
-        
+//---------------------------------------------------------------------------ALL BLOG LIST-------------------------------------------------------------------------------------        
           self.fetchAllBlogs = function(){
               BlogService.fetchAllBlogs()
                   .then(
                                function(d) {
                                     self.blogs = d;
+                                 console.log('inside fetch all blog')
+                           
                                },
                                 function(errResponse){
                                     console.error('Error while fetching Blogs');
                                 }
                        );
           };
-            
+  //--------------------------------------------------------------------------ADD BLOG--------------------------------------------------------------------------------------          
           self.createBlog = function(blog){
               BlogService.createBlog(blog)
                       .then(
                     		  
                     		  function(d) {
 									
-									self.user = d;
-									if (self.user.errorCode == "404")
+									self.blog = d;
+									if (self.blog.errorCode == "404")
 
 									{
-										alert(self.user.errorMessage)
+										alert(self.blog.errorMessage)
 
-										self.user.username = "";
-										self.user.password = "";
+										self.blog.username = "";
+										self.blog.password = "";
 
-									} else { //valid credentials
+									} else { 
 												
-//												self.fetchAllUsers(); 
-												alert(self.user.errorMessage)
+												self.fetchAllUsers(); 
+													$location.path('/addblog');
+												
 
 									}}
 
-								
-                    		  
-//                    		  
-//                      self.fetchAllBlogs, 
-//                              function(errResponse){
-//                                   console.error('Error while creating Blog.');
-//                              } 
                   );
           };
- 
+//--------------------------------------------------------------------------UPDATE BLOG--------------------------------------------------------------------------------------          
          self.updateBlog = function(blog, id){
               BlogService.updateBlog(blog, id)
                       .then(
@@ -74,7 +76,8 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
                               } 
                   );
           };
-          
+
+//--------------------------------------------------------------------------ACCEPT BLOG--------------------------------------------------------------------------------------          
           self.accept = function(id) {
 				console.log("accept...")
 				JobService
@@ -92,8 +95,8 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
 									console
 											.error('Error while accepting the blog.');
 								});
-			};
-			
+			};  
+//--------------------------------------------------------------------------REJECT BLOG--------------------------------------------------------------------------------------          
 			self.reject = function( id) {
 				console.log("reject...")
 				var reason = prompt("Please enter the reason");
@@ -113,16 +116,25 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
 								});
 			};
 
- 
-               //calling the method
-          //when it will be execute?
-          self.fetchAllBlogs();
+			
+			
+			
+			
+			
+			
+			
+			
+
+     self.fetchAllBlogs();
  
           self.addblog = function() {
            
                   self.createBlog(self.blog);
+              	self.reset();
+				
             
           };
+    
                
           self.edit = function(id){
               console.log('id to be edited', id);
@@ -136,7 +148,7 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
                
           self.remove = function(id){
               console.log('id to be deleted', id);
-              if(self.blog.id === id) {//clean form if the blog to be deleted is shown there.
+              if(self.blog.id === id) {
                  self.reset();
               }
               self.deleteBlog(id);
@@ -145,7 +157,7 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
            
           self.reset = function(){
         	   self.blog={id:'',title:'',description:'',BlogID:'',dateTime:'',status:'',reason:'',errorMessage : ''};
-               $scope.myForm.$setPristine(); //reset Form
+
           };
  
       }]);

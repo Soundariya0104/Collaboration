@@ -17,11 +17,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.niit.dao.UserDAO;
 import com.niit.daoimpl.UserDAOImpl;
 import com.niit.model.Blog;
-import com.niit.model.Event;
-import com.niit.model.Forum;
 import com.niit.model.Friend;
 import com.niit.model.Job;
 import com.niit.model.User;
+
 
 
 @Configuration
@@ -31,18 +30,17 @@ public class ApplicationContextConfig {
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {
 	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
-	    dataSource.setDriverClassName("org.h2.Driver");
-	dataSource.setUrl("jdbc:h2:tcp://localhost/~/collab");
-	    dataSource.setUsername("sa");
-	dataSource.setPassword("");
+	    dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+	dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
+	    dataSource.setUsername("ADMIN");
+	dataSource.setPassword("admin");
 	 
 	    return dataSource;
 	}
 	private Properties getHibernateProperties() {
 	    Properties properties = new Properties();
 	    properties.put("hibernate.show_sql", "true");
-	    properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-	   properties.put("hibernate.hbm2ddl.auto", "update");
+	    properties.put("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 	    return properties;
 	}
 	@Autowired
@@ -52,8 +50,6 @@ public class ApplicationContextConfig {
 	 LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 	 sessionBuilder.addProperties(getHibernateProperties());
 	sessionBuilder.addAnnotatedClasses(User.class);
-	sessionBuilder.addAnnotatedClasses(Event.class);
-	sessionBuilder.addAnnotatedClasses(Forum.class);
 	sessionBuilder.addAnnotatedClasses(Friend.class);
 	sessionBuilder.addAnnotatedClasses(Job.class);
 	sessionBuilder.addAnnotatedClasses(Blog.class);

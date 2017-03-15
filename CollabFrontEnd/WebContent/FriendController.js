@@ -1,36 +1,37 @@
 'use strict';
- console.log("start of friend controller")
 app.controller('FriendController', ['UserService','$scope', 'FriendService','$location',
    '$rootScope',function(UserService,$scope, FriendService,$location,$routeParams,$rootScope) {
-	console.log("FriendController...")
+	console.log("inside FriendController")
           var self = this;
-          self.Friend={id:'',userid:'',friendid:'',status:''};
+          self.Friend={friendid:'',username1:'',username2:'',friendstatus:''};
           self.friends=[];
           
-          self.Userdetails = {
-  				userid : '',
+          self.User = {
   				username : '',
   				password : '',
-  				contact : '',
+  				mobile : '',
   				address : '',
   				email : '',
   				is_online:'',
-  				Role : '',
-  				errorMessage : ''
-  			};
+  				role : '',
+  				errorMessage : '',
+  				status : '',
+  				firstname : '',
+  				secondname : '',
+          };
   			self.users = [];
-          
-         self.sendFriendRequest=sendFriendRequest
+  			self.friendsnotify = [];
+  	          self.friendlist=[];
+         self.addFriend=addfriend
          
-         function sendFriendRequest(friendid)
+         function addfriend(username)
          {
 
-       	  console.log("->sendFriendRequest :"+friendid)
-             FriendService.sendFriendRequest(friendid)
+       	  console.log("inside addfriend controller")
+        	 FriendService.addfriend(username)
                  .then(
                               function(d) {
                                    self.Friend = d;
-                                  alert("Friend request sent")
                               },
                                function(errResponse){
                                    console.error('Error while sending friend request');
@@ -48,7 +49,7 @@ app.controller('FriendController', ['UserService','$scope', 'FriendService','$lo
                                function(d) {
                                     self.friends = d;
                                     console.log("Got the friends list")
-                                     	/* $location.path('/view_friend');*/
+                                     	
                                },
                                 function(errResponse){
                                     console.error('Error while fetching Friends');
@@ -67,20 +68,50 @@ app.controller('FriendController', ['UserService','$scope', 'FriendService','$lo
                   );
           };
  
-         self.deleteFriend = function(id){
-              FriendService.deleteFriend(id)
+          
+          self.notifications=function(){
+        	  FriendService.notifications()
+        	  .then( 
+        			  function(d) {
+                  self.friendsnotify = d;
+                  console.log(d)
+                  console.log("Got the notification list")
+                   }
+            
+        			  
+        			  );
+          };
+       
+          self.acceptfriend=function(username){
+        	  console.log("inside accept friend")
+        	  FriendService.acceptfriend(username)
+        	  .then( function(){
+        		
+                   	 $location.path('/viewallfriends');
+             }
+            
+        			  
+        			  );
+          };
+
+                  
+          
+         self.unfriend = function(username){
+              FriendService.unfriend(username)
                       .then(
                               self.fetchAllFriends, 
                               function(errResponse){
                                    console.error('Error while deleting Friend.');
-                              } 
-                  );
+                                 	 $location.path('/viewallfriends');
+} 
+                     );
           };
           
           self.fetchAllUsers = function() {
 				UserService.fetchAllUsers().then(function(d) {
 					console.error('inside function, fetching Users');
 					self.users = d;
+					console.log(d)
 				}, function(errResponse) {
 					console.error('Error while fetching Users');
 				});
@@ -89,7 +120,6 @@ app.controller('FriendController', ['UserService','$scope', 'FriendService','$lo
  
           self.fetchAllUsers();
           self.getMyFriends();
- 
-     
- 
-      }]);
+      self.notifications();
+      
+}]);

@@ -1,11 +1,21 @@
-app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootScope',						'$http',
+app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootScope','$http',
 						function($scope, UserService, $location, $rootScope,
 								$http) {
 							console.log("UserController...")
 							var self = this;
-							this.user = {username : '',name : '', password : '',	mobile : '',
-								address : '', email : '',isOnline : '',	role : '',
-								errorCode : '',	errorMessage : '' , imageUrl:''
+							this.user = {
+									username : '',
+									firstname : '', 
+									secondname : '', 
+									password : '',	
+									mobile : '',
+									address : '', 
+									email : '',
+									is_online : '',	
+									role : '',
+									errorCode : '',	
+									errorMessage : '' , 
+									imageUrl:''
 							};
 							
 							this.users = []; //json array
@@ -28,7 +38,7 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 													
 												});
 							};							
-													
+												
 
 							self.authenticate = function(user) {
 								console.log("authenticate...")
@@ -48,15 +58,15 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 														self.user.password = "";
 
 													} else { 
-																alert(self.user.errorMessage)
-											
+														$rootScope.currentUser = self.user
+														console.log(self.user);
+	                                                 	
+														 $location.path('/');
 													}
 
 												},
 												function(errResponse) {
-
-													console
-															.error('Error while authenticate Users');
+													
 												});
 							};
 
@@ -84,6 +94,8 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 								}
 								self.reset();
 							};
+
+
 						
 						} ]);
 

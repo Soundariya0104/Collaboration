@@ -4,11 +4,11 @@ app.factory('FriendService', ['$http', '$q','$rootScope', function($http, $q,$ro
 	
 	console.log("FriendService...")
 	
-	var BASE_URL='http://localhost:8080/Collaboration'
+	var BASE_URL='http://localhost:8085/Collaboration'
     return {
          
 		getMyFriends: function() {
-                    return $http.get(BASE_URL+'/myFriends')
+                    return $http.get(BASE_URL+'/friendslist')
                             .then(
                                     function(response){
                                         return response.data;
@@ -17,8 +17,8 @@ app.factory('FriendService', ['$http', '$q','$rootScope', function($http, $q,$ro
                             );
             },
              
-            sendFriendRequest: function(friendid){
-                    return $http.get(BASE_URL+'/addfriend/'+friendid)
+            addfriend: function(username){
+                    return $http.get(BASE_URL+'/addfriend/'+username)
                             .then(
                                     function(response){
                                         return response.data;
@@ -30,18 +30,65 @@ app.factory('FriendService', ['$http', '$q','$rootScope', function($http, $q,$ro
                             );
             },
              
-            updateFriendRequest: function(friend, id){
-                    return $http.put(BASE_URL+'/friend/'+id, friend)
+            notifications: function(){
+                    return $http.get(BASE_URL+'/notifications')
                             .then(
                                     function(response){
                                         return response.data;
                                     }, 
                                     function(errResponse){
-                                        console.error('Error while updating friend');
+                                        console.error('Error while getting notification');
                                         return $q.reject(errResponse);
                                     }
                             );
-            },            
+            },
+
+            
+            removefriend: function(username){
+            return $http.get(BASE_URL+'/unfriend/'+username)
+                    .then(+
+                            function(response){
+                                return response.data;
+                            }, 
+                            function(errResponse){
+                                console.error('Error while deleting friend');
+                                return $q.reject(errResponse);
+                            }
+                    );
+    },
+           
+            
+    unfriend: function(username){
+    	return $http.get(BASE_URL+'/unfriend/'+username)
+                .then(
+                        function(response){
+                            return response.data;
+                        }, 
+                        function(errResponse){
+                            console.error('Error while getting notification');
+                            return $q.reject(errResponse);
+                        }
+                );
+},
+   
+            
+            acceptfriend: function(username){
+            	console.log("inside acceptfriend services")
+            	console.log("rock it my boy"+username)
+                return $http.get(BASE_URL+'/acceptfriend/'+username)
+                        .then(
+                                function(response){
+                                    return response.data;
+                                }, 
+                                function(errResponse){
+                                    console.error('Error while getting notification');
+                                    return $q.reject(errResponse);
+                                }
+                        );
+        },
+         
+            
+           
          
     };
  

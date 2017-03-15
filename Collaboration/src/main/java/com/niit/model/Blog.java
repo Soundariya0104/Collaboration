@@ -11,45 +11,42 @@ import javax.persistence.Transient;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="BLOG")
+@Table(name="BLOG_TABLE")
 @Component
 public class Blog extends BaseDomain {
 
 	@Id
-	private int blogid;
-	private String blogtitle;
+	private String blogname;
 	private String blogdescription;
-	@Column(name="username")
-	private String userid;
+	private String username;
 	
-	@Transient
+@Transient
 	@Column(name="date_time")
 	private Date blogdatetime;
 	private char blogstatus;
-	private String blogreaason;
-	public int getBlogid() {
-		return blogid;
+	private String blogreason;
+	public String getBlogname() {
+		return blogname;
 	}
-	public void setBlogid(int blogid) {
-		this.blogid = blogid;
+	public void setBlogname(String blogname) {
+		this.blogname = blogname;
 	}
-	public String getBlogtitle() {
-		return blogtitle;
+	public String getUsename() {
+		return username;
 	}
-	public void setBlogtitle(String blogtitle) {
-		this.blogtitle = blogtitle;
-	}
+
+	
 	public String getBlogdescription() {
 		return blogdescription;
 	}
 	public void setBlogdescription(String blogdescription) {
 		this.blogdescription = blogdescription;
 	}
-	public String getUserid() {
-		return userid;
+	public String getUsername() {
+		return username;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public Date getBlogdatetime() {
 		return blogdatetime;
@@ -63,11 +60,11 @@ public class Blog extends BaseDomain {
 	public void setBlogstatus(char blogstatus) {
 		this.blogstatus = blogstatus;
 	}
-	public String getBlogreaason() {
-		return blogreaason;
+	public String getBlogreason() {
+		return blogreason;
 	}
-	public void setBlogreaason(String blogreaason) {
-		this.blogreaason = blogreaason;
+	public void setBlogreason(String blogreason) {
+		this.blogreason = blogreason;
 	}
 	
 	

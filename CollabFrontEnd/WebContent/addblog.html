@@ -1,34 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+
 
 <div ng-controller="BlogController as ctrl">
 
 	
 	<form name="form" ng-submit="ctrl.addblog()" role="form">
 		
-<label for="">Blog title</label> 
-<input type="text"	name="blogtitle" id="blogtitle" class="form-control"
-					ng-model="ctrl.blog.blogtitle" required /> 					
+<label for="">Blog Name::</label> 
+<input type="text"	 class="form-control"
+					ng-model="ctrl.blog.blogname" required /> 		
+<br>Name:
+					<input type="text"	name="username"  class="form-control"
+					ng-model="ctrl.blog.username" required /> 		
+
+<input type="hidden" 	value="{{currentUser.username}}" name="username" id="username" class="form-control"
+					ng-model="ctrl.blog.username"  /> 					
 		
-<br><br>
-<label for="">Blog description</label>
+
+<label for="">Blog Description:</label>
  <textarea 
 		name="blogdescription" id="blogdescription" class="form-control"
-		ng-model="ctrl.blog.blogdescription" required  cols="30" rows="10"/> </textarea>
+		ng-model="ctrl.blog.blogdescription" required  cols="50" rows="10"> </textarea>
 			
 			<br>
 	<button type="submit"		
-					>Add blog</button>
+					class="btn btn-primary">Add blog</button>
 				
 		</form>
-	
+	BLOG page:{{currentUser.username}}-name<br>
+<div ng-repeat="bloglist in ctrl.blogs">
+<a  href="#" ng-click="ctrl.getBlog(bloglist.blogname)"> Blog Title: {{bloglist.blogname}}    -----------------------------------Author :{{bloglist.usename}}---------------- </a>
+</div>
 </div>
 
-
-</body>
-</html>

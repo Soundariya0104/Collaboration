@@ -2,11 +2,11 @@ app.factory('BlogService', ['$http', '$q','$rootScope', function($http, $q,$root
 	
 	console.log("inside BlogService...")
 	
-	var BASE_URL='http://localhost:8080/Collaboration/'
+	var BASE_URL='http://localhost:8085/Collaboration'
     return {
          
-            fetchAllBlogs: function() {                                   //fetch all blogs
-                    return $http.get(BASE_URL+'/blogs')
+            fetchAllBlogs: function() {
+                    return $http.get(BASE_URL+'/fetchallblogs')
                             .then(
                                     function(response){
                                         return response.data;
@@ -18,7 +18,7 @@ app.factory('BlogService', ['$http', '$q','$rootScope', function($http, $q,$root
                             );
             },
              
-            createBlog: function(blog){                                  //creating blog
+            createBlog: function(blog){
                     return $http.post(BASE_URL+'/createblog', blog)
                             .then(
                                     function(response){
@@ -31,7 +31,7 @@ app.factory('BlogService', ['$http', '$q','$rootScope', function($http, $q,$root
                             );
             },
              
-            updateBlog: function(blog, id){                               //updating blog
+            updateBlog: function(blog, id){
                     return $http.put(BASE_URL+'/blog/'+id, blog)
                             .then(
                                     function(response){
@@ -85,8 +85,8 @@ app.factory('BlogService', ['$http', '$q','$rootScope', function($http, $q,$root
                             );
             },
             
-            getBlog: function(id){
-                return $http.get  (BASE_URL+'/blog/'+id)
+            getblog: function(blogname){
+                return $http.get  (BASE_URL+'/getblogbyname/'+blogname)
                         .then(
                                 function(response){
                                 	$rootScope.selectedBlog = response.data

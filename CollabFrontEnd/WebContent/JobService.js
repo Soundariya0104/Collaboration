@@ -2,7 +2,7 @@ app.factory('JobService', ['$http', '$q','$rootScope', function($http, $q,$rootS
 	
 	console.log("inside jobService...")
 	
-	var BASE_URL='http://localhost:8080/Collaboration'
+	var BASE_URL='http://localhost:8085/Collaboration'
     return {
          
             fetchAlljobs: function() {
@@ -18,8 +18,8 @@ app.factory('JobService', ['$http', '$q','$rootScope', function($http, $q,$rootS
                             );
             },
              
-            createjob: function(jobModel){
-                    return $http.post(BASE_URL+'/createJob', jobModel)
+            createjob: function(job){
+                    return $http.post(BASE_URL+'/createJob', job)
                             .then(
                                     function(response){
                                         return response.data;

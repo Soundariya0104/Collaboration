@@ -39,12 +39,13 @@ public class JobController {
 	
 	@PostMapping(value = "/createJob")
 	public ResponseEntity<Job> createJob(@RequestBody Job Job, HttpSession session) {
-		System.out.println("username:" + Job);
+		System.out.println("hii");
 		
 		
 		if(jobDAO.saveJob(Job)){
 			Job=new Job();
 			Job.setErrorCode("200");
+			System.out.println("hii1");
 			Job.setErrorMessage("Job created");
 			
 		}else{

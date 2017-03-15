@@ -8,30 +8,36 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="User")
+@Table(name="User_TABLE")
 @Component
 public class User extends BaseDomain{
 	
 	@Id
-	private String username;
+	 String username;
 	@Column
-	private String firstname;
+	 String firstname;
 	@Column
-	private String secondname;
+	String secondname;
 	@Column
-	private String password;
+	String password;
 	@Column
-	private String email;
+	String email;
 	@Column
-	private String mobile;
+	String mobile;
 	@Column
-	private char status;
+	 char status;
 	@Column
-	private char is_online;
+	 char is_online;
+	@Column
+	 String role="ROLE_USER";
+
 	
-	
-	
-	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getPassword() {
 		return password;
 	}

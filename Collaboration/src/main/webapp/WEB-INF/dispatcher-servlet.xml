@@ -4,23 +4,27 @@
 	xmlns:webflow-config="http://www.springframework.org/schema/webflow-config"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
 	http://www.springframework.org/schema/mvc
-	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
     http://www.springframework.org/schema/webflow-config 
 	http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd">
  
  	<mvc:annotation-driven/>
- 	 	
- 	
  	<context:component-scan base-package="com.niit" />
 
  
-	<bean id="viewClass" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/html_pages/"/>	
-		<property name="suffix" value=".html"/>
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp_pages/"/>	
+		<property name="suffix" value=".jsp"/>
 	</bean>
+
+
+<!-- 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> -->
+<!-- 		<property name="maxUploadSize" value="10000000" /> -->
+<!-- </bean> -->
+<!-- 	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />  -->
+
 </beans>
-	

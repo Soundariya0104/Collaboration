@@ -7,10 +7,10 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.dao.BlogDAO;
 import com.niit.model.Blog;
-
 
 @EnableTransactionManagement
 @Repository("blogDAO")
@@ -25,26 +25,31 @@ public class BlogDAOImpl implements BlogDAO{
 
 	
 	//------------------------------------------------------GET BLOG---------------------------------------------------------------
-	public Blog getBlog(int blogid){
-		return (Blog) sessionFactory.getCurrentSession().get(Blog.class, blogid);
+	@Transactional
+	public Blog getBlog(String blogname){
+		return (Blog) sessionFactory.getCurrentSession().get(Blog.class, blogname);
 	
 	}
 	
 	
 	//------------------------------------------------------GET ALL BLOG---------------------------------------------------------------
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	@Transactional
 	public List<Blog> getAllBlog(){
-		Query query = sessionFactory.getCurrentSession().createQuery("from BlogModel");
+		Query<Blog> query = sessionFactory.getCurrentSession().createQuery("from Blog");
 	return query.list();
 	}
 	
 	//------------------------------------------------------GET all BLOG of by user---------------------------------------------------------------
+	@Transactional
 	public List<Blog> getAllblogs(String username){
 		String hql="from Blog where username='"+username+"'";
-	Query query = sessionFactory.getCurrentSession().createQuery(hql);
-    return query.list();
+	Query<Blog> query = sessionFactory.getCurrentSession().createQuery(hql);
+return query.list();
 	}
 	
 	//------------------------------------------------------SAVE BLOG---------------------------------------------------------------
+	@Transactional
 	public boolean saveblog(Blog blog){
 		try{
 			sessionFactory.getCurrentSession().save(blog);
@@ -56,6 +61,7 @@ public class BlogDAOImpl implements BlogDAO{
 	}
 	
 	//------------------------------------------------------update BLOG---------------------------------------------------------------
+	@Transactional
 	public boolean update(Blog blog){
 		return false;
 	}

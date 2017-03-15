@@ -1,22 +1,23 @@
 <html>
 
 <head>
-<title>Collabrtoion</title>
+<title>Collabration</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script> -->
-<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script> -->
   
-
+<link rel="stylesheet" href="resources/css/bootstrap.css">
+<script src="resources/js/boostrap.js"></script>
+<script src="resources/js/jquery.js"></script>
+<script src="resources/angular.js"></script>  
 <script src="resources/angular.js"></script>
 <script src="resources/angular-route.js"></script>
+<script src="resources/angular-cookies.js"></script>
  
 </head>
-<body ng-app="myApp" ng-controller="UserController">
+<body ng-app="myApp" ng-controller="UserController as ctrl">
 
   
   <nav class="navbar navbar-inverse">
@@ -35,30 +36,40 @@
           </ul>
       </li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Blog
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">Blog
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#/addblog">Add blog</a></li>
-          <li><a href="#/listblog">List Blog</a></li>
+          <li><a href="#/viewblog">View blog</a></li>
+          <li><a href="#/listblog">List blog</a></li>
+          </ul>
+      </li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Job
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/addjob">Add Job</a></li>
+          <li><a href="#/viewjob">View Job</a></li>
           </ul>
       </li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Friend
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">Friend
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#/viewfriend">View Friend</a></li>
-          <li><a href="#/searchfriend">Search Friend</a></li>
-          </ul>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Chat
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#/chat">Chat here!!</a></li>
+          <li><a href="#/viewalluser">View All users</a></li>
+          <li><a href="#/viewalluser">View notifications</a></li>
+         
+          <li><a href="#/viewfriend">View my friends</a></li>
           
           </ul>
       </li>
-      <li><a href="#/logout">logout</a></li>
+      
+         <li class=""><a href="#/forum">Forum</a></li></ul>
+      <ul class="nav navbar-nav navbar-right">
+      <li class=""><a href="#">{{currentUser.username}} account</a></li>
+      <li class=""><a href="#/logout" ng-click="ctrl.logout()">Logout</a></li>
+      
+      
        </ul>
   </div>
 </nav>
@@ -76,10 +87,10 @@
 	<script src="UserService.js"></script>
 	<script src="BlogController.js"></script>
 	<script src="BlogService.js"></script>
+	<script src="JobController.js"></script>
+	<script src="JobService.js"></script>
 	<script src="FriendController.js"></script>
 	<script src="FriendService.js"></script>
-	<script src="ChatController.js"></script>
-	<script src="ChatService.js"></script>
 	
 
 </body>

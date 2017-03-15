@@ -118,6 +118,11 @@
     <version>1.4.193</version>
 </dependency>
     <!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
+    <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0</version>
+        </dependency>
 
     
   </dependencies>

@@ -1,61 +1,52 @@
 package com.niit.model;
 
-import java.util.UUID;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
+@Table(name="FRIEND_TABLE")
 @Component
-@Table(name="Friend")
 public class Friend extends BaseDomain {
-
 	@Id
+	@GeneratedValue
+	int friendid;
 	
-	private String id;
-	private String userid;
-	private String friendid;
-	private String status;
-	private char is_online;
+	String username1;
+	String username2;
+	char friendstatus;
+
 	
 	
-	
-	public String getId() {
-		return id;
+	public String getUsername1() {
+		return username1;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getUserid() {
-		return userid;
-	}
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-	public String getFriendid() {
+	public int getFriendid() {
 		return friendid;
 	}
-	public void setFriendid(String friendid) {
+	public void setFriendid(int friendid) {
 		this.friendid = friendid;
 	}
-	public String getStatus() {
-		return status;
+	public void setUsername1(String username1) {
+		this.username1 = username1;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public String getUsername2() {
+		return username2;
 	}
-	public char getIs_online() {
-		return is_online;
+	public void setUsername2(String username2) {
+		this.username2 = username2;
 	}
-	public void setIs_online(char is_online) {
-		this.is_online = is_online;
+	public char getFriendstatus() {
+		return friendstatus;
 	}
-	public Friend()
-	{
-		this.id="FRIEND" + UUID.randomUUID().toString().substring(24).toUpperCase();
+	public void setFriendstatus(char friendstatus) {
+		this.friendstatus = friendstatus;
 	}
-		
-		
 	
+	
+
 }

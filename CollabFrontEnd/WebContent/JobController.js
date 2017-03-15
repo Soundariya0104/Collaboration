@@ -1,7 +1,7 @@
 app.controller('JobController', ['$scope', 'JobService','$location','$rootScope',function($scope, JobService,$location,$routeParams,$rootScope) {
 	console.log("inside jobController...")
           var self = this;
-          self.jobModel={jobname:'',jobdescription:'',username:''};
+          self.job={jobname:'',jobdescription:'',username:''};
           self.jobs=[];
             
           
@@ -39,20 +39,20 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
                        );
           };
   //--------------------------------------------------------------------------ADD job--------------------------------------------------------------------------------------          
-          self.createjob = function(jobModel){
-              JobService.createjob(jobModel)
+          self.createjob = function(job){
+              JobService.createjob(job)
                       .then(
                     		  
                     		  function(d) {
 									
-									self.jobModel = d;
-									if (self.jobModel.errorCode == "404")
+									self.job = d;
+									if (self.job.errorCode == "404")
 
 									{
-										alert(self.jobModel.errorMessage)
+										alert(self.job.errorMessage)
 
-										self.jobModel.username = "";
-										self.jobModel.password = "";
+										self.job.username = "";
+										self.job.password = "";
 
 									} else { 
 												
@@ -82,7 +82,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
  
           self.addjob = function() {
            
-                  self.createjob(self.jobModel);
+                  self.createjob(self.job);
               	self.reset();
 				
             
@@ -93,7 +93,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
               console.log('id to be edited', id);
               for(var i = 0; i < self.jobs.length; i++){
                   if(self.jobs[i].id === id) {
-                     self.jobModel = angular.copy(self.jobs[i]);
+                     self.job = angular.copy(self.jobs[i]);
                      break;
                   }
               }
@@ -101,7 +101,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
                
           self.remove = function(id){
               console.log('id to be deleted', id);
-              if(self.jobModel.id === id) {//clean form if the job to be deleted is shown there.
+              if(self.job.id === id) {
                  self.reset();
               }
               self.deletejob(id);
@@ -109,8 +109,8 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
  
            
           self.reset = function(){
-        	  self.jobModel={jobname:'',jobdescription:'',username:'',jobdateTime:'',jobstatus:'',jobreason:''};
-                // $scope.myForm.$setPristine(); 
+        	  self.job={jobname:'',jobdescription:'',username:'',jobdateTime:'',jobstatus:'',jobreason:''};
+               
           };
  
       }]);
