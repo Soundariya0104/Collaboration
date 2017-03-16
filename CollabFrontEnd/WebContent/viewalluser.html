@@ -2,7 +2,11 @@
 	
 	user page:{{currentUser.username}}-name<br>
 <div ng-repeat="userlist in ctrl.users">
-<a  href="#" ng-click="ctrl.getuser(userlist.username)"> Username: {{userlist.username}}   ---------------- </a>
+<a  href="#" ng-click="ctrl.getuser(userlist.username)"> Username: {{userlist.username}}    </a>
 <a href="#" ng-click="ctrl.addFriend(userlist.username)" >Send friend request</a>
 </div>
+
+<br><br><br>
+	
+	<a href="" ng-click="notifications">Notifications</a>
 </div>

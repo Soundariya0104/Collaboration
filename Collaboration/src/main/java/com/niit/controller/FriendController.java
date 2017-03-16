@@ -1,5 +1,7 @@
 package com.niit.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,36 @@ public ResponseEntity<Friend> addfriend(@PathVariable String username, HttpSessi
 	friend.setFriendstatus('w');
 	friendDAO.addfriend(friend);
 	return new ResponseEntity<Friend>(friend, HttpStatus.OK);
+}
 
+	@GetMapping("/notifications")
+	public List<Friend> notifications(HttpSession session){
+		System.out.println("am inside notification backend controller");
+		String username1 = (String) session.getAttribute("Username");
+		return friendDAO.notifications(username1);
+	}
 
-}}
+	@GetMapping("/acceptfriend/{username}")
+	public void acceptfriend(@PathVariable String username,HttpSession session){
+		System.out.println("am inside acceptfriend controller");
+		System.out.println("hiii my boy"+username);
+		String username1 = (String) session.getAttribute("Username");
+		friend.setUsername1(username);
+		friend.setUsername2(username1);
+		friendDAO.acceptfriend(friend);
+	}
+
+	@GetMapping("/friendslist")
+	public List<Friend> friendslist(HttpSession session){
+		String username = (String) session.getAttribute("Username");
+		return friendDAO.friendslist(username);
+		
+	}
+	@GetMapping("/unfriend/{username}")
+	public void unfriend(@PathVariable String username,HttpSession session){
+		String username1 = (String) session.getAttribute("Username");
+	friendDAO.unfriend(username1, username);
+		
+	}
+
+}

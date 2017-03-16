@@ -1,12 +1,12 @@
 'use strict';
-app.controller('FriendController', ['UserService','$scope', 'FriendService','$location',
-   '$rootScope',function(UserService,$scope, FriendService,$location,$routeParams,$rootScope) {
+app.controller('FriendController', ['UserService','$scope', 'FriendService','$location', '$cookieStore',
+   '$rootScope',function(UserService,$scope, FriendService,$location,$routeParams,$rootScope,$cookieStore) {
 	console.log("inside FriendController")
           var self = this;
           self.Friend={friendid:'',username1:'',username2:'',friendstatus:''};
           self.friends=[];
           
-          self.User = {
+          self.UserModel = {
   				username : '',
   				password : '',
   				mobile : '',
@@ -32,6 +32,7 @@ app.controller('FriendController', ['UserService','$scope', 'FriendService','$lo
                  .then(
                               function(d) {
                                    self.Friend = d;
+                              	 $location.path('/viewalluser');
                               },
                                function(errResponse){
                                    console.error('Error while sending friend request');
@@ -49,7 +50,7 @@ app.controller('FriendController', ['UserService','$scope', 'FriendService','$lo
                                function(d) {
                                     self.friends = d;
                                     console.log("Got the friends list")
-                                     	
+                                     	/* $location.path('/view_friend');*/
                                },
                                 function(errResponse){
                                     console.error('Error while fetching Friends');
@@ -98,18 +99,22 @@ app.controller('FriendController', ['UserService','$scope', 'FriendService','$lo
           
          self.unfriend = function(username){
               FriendService.unfriend(username)
-                      .then(
-                              self.fetchAllFriends, 
+                      .then(        			  function(d) {
+
+                    		  console.log('inside unfriend jolly')
+                    			 $location.path('/viewallfriends')
+                    			 self.fetchAllFriends},
+                      
                               function(errResponse){
                                    console.error('Error while deleting Friend.');
-                                 	 $location.path('/viewallfriends');
+                                 
 } 
                      );
           };
           
           self.fetchAllUsers = function() {
 				UserService.fetchAllUsers().then(function(d) {
-					console.error('inside function, fetching Users');
+					console.log('inside function, fetching Users');
 					self.users = d;
 					console.log(d)
 				}, function(errResponse) {

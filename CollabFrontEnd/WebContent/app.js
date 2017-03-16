@@ -17,11 +17,20 @@ app.config(function($routeProvider) {
 		    templateUrl : 'addblog.html',
 		    controller  : 'BlogController'
 		  })
-	  .when('/viewblog', {
+	  .when('/listblog', {
 		    templateUrl : 'listblog.html',
 		    controller  : 'BlogController'
 		  })
-		  
+		  .when('/viewblog', {
+		    templateUrl : 'viewblog.html',
+		    controller  : 'BlogController'
+		  })
+  
+		  .when('/userblog', {
+		    templateUrl : 'userblog.html',
+		    controller  : 'BlogController'
+		  })
+
 		   .when('/addjob', {
 		    templateUrl : 'addjob.html',
 		    controller  : 'JobController'

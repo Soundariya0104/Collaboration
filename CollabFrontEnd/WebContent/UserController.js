@@ -1,5 +1,5 @@
-app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootScope','$http',
-						function($scope, UserService, $location, $rootScope,
+app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootScope','$cookieStore',						'$http',
+						function($scope, UserService, $location, $rootScope,$cookieStore,
 								$http) {
 							console.log("UserController...")
 							var self = this;
@@ -38,7 +38,20 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 													
 												});
 							};							
-												
+							self.createblog = function(user) {
+								UserService
+										.createblog(user)
+										.then(
+												function(d)
+												{
+													alert("Thank you for registration")
+												},
+												function(errResponse) {
+													console
+													alert("not registered")
+													
+												});
+							};							
 
 							self.authenticate = function(user) {
 								console.log("authenticate...")
@@ -59,6 +72,7 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 
 													} else { 
 														$rootScope.currentUser = self.user
+														$cookieStore.currentUser=self.user
 														console.log(self.user);
 	                                                 	
 														 $location.path('/');
@@ -72,8 +86,9 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 
 							self.logout = function() {
 								console.log("logout")
-								$rootScope.currentUser = {};
-								$cookieStore.remove('currentUser');
+//								$rootScope.currentUser = {};
+								 $rootScope.currentUser = undefined
+							//	$cookieStore.remove('currentUser');
 								UserService.logout()
 								$location.path('/');
 
@@ -94,8 +109,6 @@ app.controller(	'UserController', [	'$scope', 'UserService', '$location','$rootS
 								}
 								self.reset();
 							};
-
-
-						
+							
 						} ]);
 
