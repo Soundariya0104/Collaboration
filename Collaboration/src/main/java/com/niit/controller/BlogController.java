@@ -85,4 +85,12 @@ public class BlogController {
 		
 		return blog;
 			}
+	@PostMapping(value = "/userblog")
+	public ResponseEntity<Blog> userBlog( HttpSession session) {
+		String username = (String) session.getAttribute("Username");
+	
+		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
+
+}
+
 }

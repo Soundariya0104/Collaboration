@@ -1,12 +1,12 @@
 'use strict';
-app.controller('FriendController', ['UserService','$scope', 'FriendService','$location', '$cookieStore',
-   '$rootScope',function(UserService,$scope, FriendService,$location,$routeParams,$rootScope,$cookieStore) {
+app.controller('FriendController', ['UserService','$scope', 'FriendService','$location',
+   '$rootScope',function(UserService,$scope, FriendService,$location,$routeParams,$rootScope) {
 	console.log("inside FriendController")
           var self = this;
           self.Friend={friendid:'',username1:'',username2:'',friendstatus:''};
           self.friends=[];
           
-          self.UserModel = {
+          self.User = {
   				username : '',
   				password : '',
   				mobile : '',

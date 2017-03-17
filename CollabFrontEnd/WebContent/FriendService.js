@@ -74,7 +74,7 @@ app.factory('FriendService', ['$http', '$q','$rootScope', function($http, $q,$ro
             
             acceptfriend: function(username){
             	console.log("inside acceptfriend services")
-            	console.log("rock it my boy"+username)
+            	console.log("hii"+username)
                 return $http.get(BASE_URL+'/acceptfriend/'+username)
                         .then(
                                 function(response){

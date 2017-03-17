@@ -1,9 +1,12 @@
-app.controller('JobController', ['$scope', 'JobService','$location','$rootScope',function($scope, JobService,$location,$routeParams,$rootScope) {
+console.log("start of job controller")
+
+app.controller('JobController', ['$scope', 'JobService','$location','$rootScope','$cookieStore',
+                                 function($scope, JobService,$location,$routeParams,$rootScope,$cookieStore) {
 	console.log("inside jobController...")
           var self = this;
           self.job={jobname:'',jobdescription:'',username:''};
           self.jobs=[];
-            
+          self.viewjob=[];
           
          self.getJob = getjob
 
@@ -13,9 +16,9 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
                   .then(  
                 		       function(d) {
                             	   console.log('inside getselected')
-                                   
-                            	  	   console.log(d)
-                            	   
+                                       console.log(d)
+                            	        self.viewjob = d;
+                               
                                      $location.path('/viewjob'); 
                                },
                                 function(errResponse){
@@ -45,7 +48,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
                     		  
                     		  function(d) {
 									
-									self.job = d;
+									self.jobModel = d;
 									if (self.job.errorCode == "404")
 
 									{
@@ -82,7 +85,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
  
           self.addjob = function() {
            
-                  self.createjob(self.job);
+                  self.createjob(self.jobModel);
               	self.reset();
 				
             
@@ -110,7 +113,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
            
           self.reset = function(){
         	  self.job={jobname:'',jobdescription:'',username:'',jobdateTime:'',jobstatus:'',jobreason:''};
-               
+                
           };
  
       }]);

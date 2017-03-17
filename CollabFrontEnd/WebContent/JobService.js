@@ -1,6 +1,7 @@
-app.factory('JobService', ['$http', '$q','$rootScope', function($http, $q,$rootScope){
-	
+
 	console.log("inside jobService...")
+	
+app.factory('JobService', ['$http', '$q','$rootScope','$cookieStore', function($http, $q,$rootScope,$cookieStore){
 	
 	var BASE_URL='http://localhost:8085/Collaboration'
     return {

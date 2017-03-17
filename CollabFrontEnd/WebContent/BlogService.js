@@ -1,4 +1,4 @@
-app.factory('BlogService', ['$http', '$q','$rootScope', function($http, $q,$rootScope){
+app.factory('BlogService', ['$http', '$q','$rootScope','cookieStore', function($http, $q,$rootScope,$cookieStore){
 	
 	console.log("inside BlogService...")
 	

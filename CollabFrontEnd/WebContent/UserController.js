@@ -1,4 +1,4 @@
-app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootScope','$cookieStore',						'$http',
+app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootScope','$cookieStore','$http',
 						function($scope, UserService, $location, $rootScope,$cookieStore,
 								$http) {
 							console.log("UserController...")
@@ -38,31 +38,18 @@ app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootSc
 													
 												});
 							};							
-							self.createblog = function(user) {
-								UserService
-										.createblog(user)
-										.then(
-												function(d)
-												{
-													alert("Thank you for registration")
-												},
-												function(errResponse) {
-													console
-													alert("not registered")
-													
-												});
-							};							
-
+							
 							self.authenticate = function(user) {
 								console.log("authenticate...")
 								UserService
 										.authenticate(user)
 										.then(
-
+												
 												function(d) {
-													
+													console.log("authenticate2...")
 													self.user = d;
-													if (self.user.errorCode == "404")
+													console.log(	self.user.errorCode)	
+															if (self.user.errorCode == "404")
 
 													{
 														alert(self.user.errorMessage)
@@ -73,8 +60,9 @@ app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootSc
 													} else { 
 														$rootScope.currentUser = self.user
 														$cookieStore.currentUser=self.user
-														console.log(self.user);
+														console.log("hiiiiii");
 	                                                 	
+														console.log(self.user);
 														 $location.path('/');
 													}
 
@@ -100,15 +88,16 @@ app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootSc
 							self.login = function() {
 								{	self.authenticate(self.user);
 								}
-
 							};
 
 							self.register = function() {
 								{
 									self.createUser(self.user);
 								}
-								self.reset();
 							};
+
+
 							
+						
 						} ]);
 
