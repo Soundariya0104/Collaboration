@@ -67,7 +67,7 @@ app.run( function ($rootScope, $location, $http) {
 	 $rootScope.$on('$locationChangeStart', function (event, next, current) {
 		 console.log("$locationChangeStart")
 		   
-		 var userPages = ['/addblog','/listblog','/listblog','/addblog','/view_friend', '/viewFriendRequest','/chat']
+		 var userPages = ['/addblog','/listblog','/viewjob','/addjob','/viewalluser','/viewblog','/userblog','/viewfriend', '/searchfriend','/chat']
 		 var adminPages = ["/post_job","/manage_users"]
 		 
 		 var currentPage = $location.path()
