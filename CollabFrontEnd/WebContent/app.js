@@ -13,61 +13,65 @@ app.config(function($routeProvider) {
 	    controller  : 'UserController'
 	  })
 	  .when('/addblog', {
-		    templateUrl : 'addblog.html',
+		    templateUrl : 'Blog/addblog.html',
 		    controller  : 'BlogController'
 		  })
 	  .when('/viewblog', {
-		    templateUrl : 'viewblog.html',
+		    templateUrl : 'Blog/viewblog.html',
 		    controller  : 'BlogController'
 		  })
 		    .when('/userblogs', {
-		    templateUrl : 'userblogs.html',
+		    templateUrl : 'Blog/userblogs.html',
 		    controller  : 'BlogController'
 		  })
 		    .when('/listblog', {
-		    templateUrl : 'listblog.html',
+		    templateUrl : 'Blog/listblog.html',
+		    controller  : 'BlogController'
+		  })
+		    .when('/comments', {
+		    templateUrl : 'Blog/comments.html',
 		    controller  : 'BlogController'
 		  })
 		  
 		   .when('/addjob', {
-		    templateUrl : 'addjob.html',
+		    templateUrl : 'Job/addjob.html',
 		    controller  : 'JobController'
 		  })
 	  .when('/viewjob', {
-		    templateUrl : 'viewjob.html',
+		    templateUrl : 'Job/viewjob.html',
 		    controller  : 'JobController'
 		  })
 		  .when('/listjob', {
-		    templateUrl : 'listjob.html',
+		    templateUrl : 'Job/listjob.html',
 		    controller  : 'JobController'
 		  })
 		
 		    .when('/viewalluser', {
-		    templateUrl : 'viewalluser.html',
+		    templateUrl : 'Friend/viewalluser.html',
 		    controller  : 'FriendController'
 		  })
 	  .when('/viewfriends', {
-		    templateUrl : 'viewfriends.html',
+		    templateUrl : 'Friend/viewfriends.html',
 		    controller  : 'FriendController'
 		  })
 
 .when('/viewnotifications', {
-	    templateUrl : 'viewnotifications.html',
+	    templateUrl : 'Friend/viewnotifications.html',
 	    controller  : 'FriendController'
 	  })
 	  .when('/chat', {
-	    templateUrl : 'chat.html',
+	    templateUrl : 'Chat/chat.html',
 	    controller  : 'ChatController'
 	  })
 });
 
 
-app.run( function ($rootScope, $location, $http) {
+app.run( function ($rootScope, $location, $http, $cookieStore) {
 
 	 $rootScope.$on('$locationChangeStart', function (event, next, current) {
 		 console.log("$locationChangeStart")
 		   
-		 var userPages = ['/addblog','/listblog','/viewjob','/addjob','/viewalluser','/viewblog','/userblog','/viewfriend', '/searchfriend','/chat']
+		 var userPages = ['Blog/addblog','Blog/listblog','Job/addjob','Job/listjob','Job/viewjob','Friend/viewalluser','Friend/viewfriend','Friend/viewnotifications','Chat/chat']
 		 var adminPages = ["/post_job","/manage_users"]
 		 
 		 var currentPage = $location.path()
@@ -113,10 +117,10 @@ app.run( function ($rootScope, $location, $http) {
 	       );
 	 
 	 
-//     $rootScope.currentUser = $cookieStore.get('currentUser') || {};
-//     if ($rootScope.currentUser) {
-//         $http.defaults.headers.common['Authorization'] = 'Basic' + $rootScope.currentUser; 
-//     }
+     $rootScope.currentUser = $cookieStore.get('currentUser') || {};
+     if ($rootScope.currentUser) {
+         $http.defaults.headers.common['Authorization'] = 'Basic' + $rootScope.currentUser; 
+     }
 
 });
 

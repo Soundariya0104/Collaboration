@@ -2,21 +2,39 @@ package com.niit.controller;
 
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 
 import com.niit.model.Message;
 import com.niit.model.OutputMessage;
 
-@RestController
+
+
+
+
+@Controller
 public class ChatController {
+	private static final Logger logger = 
+			LoggerFactory.getLogger(ChatController.class);
+	  
 	
-		@MessageMapping("/chat")
-		@SendTo("/topic/message")
-		public OutputMessage sendMessage(Message message){
-			System.out.println("Inside chat contoller of back end...");
-			return new OutputMessage(message,new Date());
-		}
-	}
+
+  @MessageMapping("/chat")   
+	  @SendTo("/topic/message")       
+	  public OutputMessage sendMessage(Message message) {
+	  System.out.println("hii am inside chatcontrollre backend");
+	    return new OutputMessage(message, new Date()); 
+	  }
+	  
+	
+
+}
+
+
+
+
+
 

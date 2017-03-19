@@ -1,5 +1,4 @@
 package com.niit.daoimpl;
-
 import java.util.List;
 
 import org.hibernate.Session;
@@ -22,13 +21,9 @@ public class FriendDAOImpl implements FriendDAO{
 	
 	@Transactional
 	public void addfriend(Friend friend){
-		System.out.println("hjii am inside daoimpl");
+		System.out.println("hii am inside daoimpl");
 		sessionFactory.getCurrentSession().save(friend);
-		
-		
-	}
-	
-	
+}
 	@Transactional
 	public List<Friend> notifications(String username){
 
@@ -50,11 +45,11 @@ String hql="from Friend where username2= '"+username+"'and friendstatus='w'";
 				
 		hql="from Friend where username1= '"+friend.getUsername2()+"'and username2='"+friend.getUsername1()+"'";
 		if( session.createQuery(hql).uniqueResult()==null){
-			Friend friendModel2= new Friend();
-			friendModel2.setUsername1(friend.getUsername2());
-			friendModel2.setUsername2(friend.getUsername1());
-			friendModel2.setFriendstatus('f');
-			sessionFactory.getCurrentSession().save(friendModel2);
+			Friend friend1= new Friend();
+			friend1.setUsername1(friend.getUsername2());
+			friend1.setUsername2(friend.getUsername1());
+			friend1.setFriendstatus('f');
+			sessionFactory.getCurrentSession().save(friend1);
 			
 		}else{
 			friend.setFriendstatus('f');
@@ -77,19 +72,17 @@ String hql="from Friend where username2= '"+username+"'and friendstatus='w'";
 
 	@Transactional
 	public void unfriend(String username1, String username2){
-		Session session=sessionFactory.openSession();
-	Friend friend=new Friend();
-	friend.setUsername1(username1);
-	friend.setUsername2(username2);
-	friend.setFriendstatus('f');
+	Session session=sessionFactory.openSession();
+	String hql="from Friend where username1= '"+username1+"'and username2='"+username2+"'";
+	Friend friend= new Friend();
+	friend=(Friend) session.createQuery(hql).uniqueResult();
 	sessionFactory.getCurrentSession().delete(friend);
 
-	friend.setUsername1(username2);
-	friend.setUsername2(username1);
-	friend.setFriendstatus('f');
+	 hql="from Friend where username1= '"+username2+"'and username2='"+username1+"'";
+	friend=(Friend) session.createQuery(hql).uniqueResult();
 	sessionFactory.getCurrentSession().delete(friend);
-
+	
+	
 	}
 	
-
 }

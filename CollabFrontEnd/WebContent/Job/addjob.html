@@ -1,0 +1,30 @@
+
+
+<div ng-controller="JobController as ctrl">
+
+	
+	<form name="form" ng-submit="ctrl.addjob()" role="form">
+		
+<label for="">Job Title:</label> 
+<input type="text"	 class="form-control"
+					ng-model="ctrl.job.jobname" ng-init="ctrl.job.jobname=editjob.jobname" required /> 		
+
+				
+
+<input type="hidden" 	value="currentUser.username" name="username" id="username" class="form-control"
+					ng-model="ctrl.job.username"  /> 					
+		
+
+<label for="">Job Description:</label>
+ <textarea 
+		name="jobdescription" id="jobdescription" class="form-control"
+		ng-model="ctrl.job.jobdescription" ng-init="ctrl.job.jobdescription=editjob.jobdescription" required  cols="50" rows="10"> </textarea>
+			
+			<br>
+	<button type="submit"		
+					class="btn btn-primary">Add Job</button>
+				
+		</form>
+	
+</div>
+

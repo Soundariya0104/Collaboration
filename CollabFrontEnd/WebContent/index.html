@@ -2,26 +2,70 @@
 
 <head>
 <title>Collaboration</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  <!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- Google Webfonts -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Theme Style -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
+   
 <link rel="stylesheet" href="resources/css/bootstrap.css">
 <!-- <script src="resources/js/boostrap.js"></script> -->
 <!-- <script src="resources/js/jquery.js"></script> -->
 <script src="resources/angular.js"></script>  
-<script src="resources/angular.js"></script>
 <script src="resources/angular-route.js"></script>
-<script src="resources/angular-cookies.js"></script>
+<!-- <script src="resources/angular-cookies.js"></script> -->
+<script src="resources/sockjs.js"></script>  
+<script src="resources/stomp.js"></script>  
+ <script src="resources/upload.js"></script>  
  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-cookies.min.js"></script>
- 
+   
 </head>
 <body ng-app="myApp" ng-controller="UserController as ctrl">
 
   
-  <nav class="navbar navbar-darkred">
+  <nav class="navbar navbar-dark red">
   <div class="container-fluid">
     <div class="navbar-header">
 <!--       <a class="navbar-brand" href="#">Collobration site</a> -->
@@ -29,29 +73,20 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">User
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#/login">Login</a></li>
-          <li><a href="#/register">Register</a></li>
-          </ul>
-      </li>
-      <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="">Blog
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#/addblog">Add blog</a></li>
-          <li><a href="#/viewblog">View blog</a></li>
-          <li><a href="#/listblog">List blog</a></li>
-          <li><a href="#/userblog">User blog</a></li>
+          <li><a href="#/addblog">Add blogs</a></li>
+          <li><a href="#/listblog">View all blog</a></li>
+          <li><a href="#/userblog">My blogs</a></li>
           </ul>
       </li>
         <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Job
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">Job
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
+          <li><a href="#/listjob">List Job</a></li>
           <li><a href="#/addjob">Add Job</a></li>
-          <li><a href="#/viewjob">View Job</a></li>
           </ul>
       </li>
       <li class="dropdown">
@@ -59,23 +94,39 @@
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#/viewalluser">View All users</a></li>
-          <li><a href="#/viewalluser">View notifications</a></li>
+          <li><a href="#/viewnotifications">View notifications</a></li>
          
-          <li><a href="#/viewfriend">View my friends</a></li>
+          <li><a href="#/viewfriends">View my friends</a></li>
+          
           
           </ul>
       </li>
       
-         <li class=""><a href="#/forum">Forum</a></li></ul>
-      <ul class="nav navbar-nav navbar-right">
-      <li class=""><a href="#">{{currentUser.username}} account</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">Forum
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/chat">Chat here...</a></li>
+          </ul>
+          </li>
+          
+      
+
+    <div ng-if="!$root.currentUser.username.length ">
+  <ul class="nav navbar-nav navbar-right">
+<li class=""><a href="#/login">Login</a></li>
+      
+</div>
+<div ng-if="$root.currentUser.username.length ">
+  <ul class="nav navbar-nav navbar-right">
+
+      <li class=""><a href="#">{{currentUser.username}}'s account</a></li>
       <li class=""><a href="#/logout" ng-click="ctrl.logout()">Logout</a></li>
-      
-      
+</div>      
        </ul>
   </div>
 </nav>
-
+      
 
 <div class="container">
 <div class="row">
@@ -87,13 +138,35 @@
 	<script src="app.js"></script>
 	<script src="UserController.js"></script>
 	<script src="UserService.js"></script>
-	<script src="BlogController.js"></script>
-	<script src="BlogService.js"></script>
-	<script src="JobController.js"></script>
-	<script src="JobService.js"></script>
-	<script src="FriendController.js"></script>
-	<script src="FriendService.js"></script>
+	<script src="Blog/BlogController.js"></script>
+	<script src="Blog/BlogService.js"></script>
+	<script src="Job/JobController.js"></script>
+	<script src="Job/JobService.js"></script>
+	<script src="Friend/FriendController.js"></script>
+	<script src="Friend/FriendService.js"></script>
+	<script src="Chat/ChatController.js"></script>
+	<script src="Chat/ChatService.js"></script>
 	
+
+
+
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Owl carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<!-- Main JS -->
+	<script src="js/main.js"></script>
+
+
 
 </body>
 

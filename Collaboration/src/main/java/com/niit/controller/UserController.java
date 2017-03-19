@@ -21,7 +21,6 @@ import com.niit.model.User;
 
 
 
-
 @RestController
 public class UserController {
 
@@ -51,18 +50,17 @@ public class UserController {
 	
 	
 	
-	//@GetMapping(value="/validate")
 	@RequestMapping(value = "/validate", method = RequestMethod.POST)
 	public ResponseEntity<User> validateCredentials(@RequestBody User user, HttpSession session){
 		
 		if(userDAO.validate(user.getUsername(), user.getPassword()) == null){
 			user=new User();
 			user.setErrorCode("404");
-			user.setErrorMessage("Invalid Credential..please try again");
+			user.setErrorMessage("Invalid Credential...please try again");
 			
 		}else{
 			user.setErrorCode("200");
-			user.setErrorMessage("You aer succesfully logged in ....");
+			user.setErrorMessage("You are successfully logged in ....");
 			session.setAttribute("Username", user.getUsername());
 			
 				}
@@ -76,9 +74,8 @@ return new ResponseEntity<User>(user, HttpStatus.OK);
 			userDAO.save(user);
 			user.setErrorCode("200");
 			user.setErrorMessage("Successfully registered");}
-		else{
-			user.setErrorCode("400");
-		    user.setErrorMessage("User Exist with name "+user.getUsername());
+		else{user.setErrorCode("400");
+		user.setErrorMessage("User Exist with name "+user.getUsername());
 		}
 			return new ResponseEntity<User>(user,HttpStatus.OK);
 		
@@ -89,7 +86,7 @@ return new ResponseEntity<User>(user, HttpStatus.OK);
 		user.setErrorCode("200");
 		user.setErrorMessage("Successfully registered");
 	
-		return "hwllo rajesh, how u doing";
+		return "hello";
 	}
 	
 	@GetMapping("/getUser/{username}")
@@ -104,3 +101,17 @@ return new ResponseEntity<User>(user, HttpStatus.OK);
 			}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

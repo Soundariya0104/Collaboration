@@ -1,0 +1,16 @@
+<div ng-controller="FriendController as ctrl">
+	
+	user page:{{currentUser.username}}-name<br>
+<div ng-repeat="userlist in ctrl.users"| filter:>
+ <div ng-if="$root.currentUser.username!=userlist.username">
+
+<!-- <div ng-repeat="friendlist in ctrl.friendss" | filter:> -->
+ 
+<a  href="#" ng-click="ctrl.getuser(userlist.username)"> Username: {{userlist.username}}   ---------------- </a>
+<a href="#" ng-click="ctrl.addFriend(userlist.username)" >Send friend request</a>
+</div>
+</div>
+</div>
+
+	
+	<a href="" ng-click="notifications">Notifications</a>

@@ -39,18 +39,20 @@ public class JobController {
 	
 	@PostMapping(value = "/createJob")
 	public ResponseEntity<Job> createJob(@RequestBody Job Job, HttpSession session) {
-		System.out.println("hii");
+		System.out.println("username:" + job);
+//		String loggedInUserID = (String) session.getAttribute("loggedInUserID");
+//		Jobmodel.setUserid(loggedInUserID);
+//		Jobmodel.setJobstatus('N');// A->Accepted,  R->Rejected
 		
 		
 		if(jobDAO.saveJob(Job)){
-			Job=new Job();
-			Job.setErrorCode("200");
-			System.out.println("hii1");
-			Job.setErrorMessage("Job created");
+			job=new Job();
+			job.setErrorCode("200");
+			job.setErrorMessage("Job created");
 			
 		}else{
-			Job.setErrorCode("400");
-			Job.setErrorMessage("Job not created , try again....");
+			job.setErrorCode("400");
+			job.setErrorMessage("Job not created ok, try again....");
 
 				}
 
@@ -61,15 +63,22 @@ public class JobController {
 	@GetMapping("/getJobbyname/{Jobname}")
 	public Job getJobbyname(@PathVariable("Jobname") String Jobname) {
 		logger.debug("inside getJobbyname JobController ");
-		Job Job = jobDAO.getJob(Jobname);
+		Job job = jobDAO.getJob(Jobname);
 		
-		if(Job==null)
+		if(job==null)
 		{
-			Job = new Job();
-			Job.setErrorCode("404");
-			Job.setErrorMessage("Job not found with the id:" + Jobname);
+			job = new Job();
+			job.setErrorCode("404");
+			job.setErrorMessage("Job not found with the id:" + Jobname);
 		}
 		
-		return Job;
+		return job;
 			}
+
+@GetMapping(value = "/deletejob/{jobname}")
+	public void deleteBlog(@PathVariable("jobname")String jobname, HttpSession session) {
+		
+	System.out.println("hii am job"+jobname);
+	jobDAO.deletejob(jobname);
+}
 }

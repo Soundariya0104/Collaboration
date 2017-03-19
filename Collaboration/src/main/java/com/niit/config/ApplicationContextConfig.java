@@ -22,7 +22,6 @@ import com.niit.model.Job;
 import com.niit.model.User;
 
 
-
 @Configuration
 @ComponentScan("com.niit")
 @EnableTransactionManagement
@@ -34,13 +33,13 @@ public class ApplicationContextConfig {
 	dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
 	    dataSource.setUsername("ADMIN");
 	dataSource.setPassword("admin");
-	 
 	    return dataSource;
 	}
 	private Properties getHibernateProperties() {
 	    Properties properties = new Properties();
 	    properties.put("hibernate.show_sql", "true");
 	    properties.put("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+//	   properties.put("hibernate.hbm2ddl.auto", "update");
 	    return properties;
 	}
 	@Autowired

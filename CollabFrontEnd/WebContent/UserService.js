@@ -1,6 +1,8 @@
 console.log("start of user service")
 
-app.factory('UserService', ['$http', '$q','$rootScope', function($http, $q,$rootScope,$cookieStore){	
+app.factory('UserService', ['$http', '$q','$rootScope', '$cookieStore', function($http, $q,$rootScope,$cookieStore){
+	
+	
 	var BASE_URL='http://localhost:8085/Collaboration'
 		
     return {

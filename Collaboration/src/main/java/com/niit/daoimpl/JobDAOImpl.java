@@ -3,6 +3,7 @@ package com.niit.daoimpl;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.dao.JobDAO;
 import com.niit.model.Job;
+
 
 @EnableTransactionManagement
 @Repository("JobDAO")
@@ -52,7 +54,7 @@ return query.list();
 	@Transactional
 	public boolean saveJob(Job Job){
 		try{
-			sessionFactory.getCurrentSession().save(Job);
+			sessionFactory.getCurrentSession().saveOrUpdate(Job);
 			return true;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -65,4 +67,14 @@ return query.list();
 	public boolean update(Job Job){
 		return false;
 	}
+	@Transactional
+	public void deletejob(String jobname){
+		Session session=sessionFactory.openSession();
+	Job job= new Job();
+	
+		String hql="from Job where jobname='"+jobname+"'";
+			job=(Job) session.createQuery(hql).uniqueResult();
+			sessionFactory.getCurrentSession().delete(job);
+				}
+	
 }

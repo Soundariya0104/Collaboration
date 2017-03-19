@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.dao.BlogDAO;
 import com.niit.model.Blog;
+import com.niit.model.Comment;
 
 
 @RestController
@@ -41,6 +43,8 @@ public class BlogController {
 	public ResponseEntity<Blog> createBlog(@RequestBody Blog blog, HttpSession session) {
 		String username = (String) session.getAttribute("Username");
 		blog.setUsername(username);
+//		blogmodel.setBlogstatus('N');// A->Accepted,  R->Rejected
+		
 		
 		if(blogDAO.saveblog(blog)){
 			blog=new Blog();
@@ -85,12 +89,38 @@ public class BlogController {
 		
 		return blog;
 			}
-	@PostMapping(value = "/userblog")
-	public ResponseEntity<Blog> userBlog( HttpSession session) {
-		String username = (String) session.getAttribute("Username");
-	
-		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
+	@GetMapping(value = "/userblog")
+			public List<Blog> userBlog( HttpSession session) {
+				String username = (String) session.getAttribute("Username");
+			return blogDAO.getAllblogs(username);
+			
+	}
 
+@GetMapping(value = "/deleteblog/{blogname}")
+	public void deleteBlog(@PathVariable("blogname")String blogname, HttpSession session) {
+		blogDAO.deleteblog(blogname);
 }
 
+@GetMapping(value = "/editblog/{blogname}")
+	public Blog editBlog(@PathVariable("blogname")String blogname, HttpSession session) {
+		return blogDAO.getBlog(blogname);
+}
+
+
+@PostMapping(value = "/addcomment")
+	public void addcomment(@RequestBody Comment comment, HttpSession session) {
+	System.out.println("hi am"+comment);
+	System.out.println(comment.getBlogname());
+	System.out.println(comment.getComments());				
+	String username = (String) session.getAttribute("Username");
+comment.setUsername(username);
+blogDAO.addcomment(comment);
+}
+
+@GetMapping(value = "/getcomments/{blogname}")
+public List<Comment> getcomments(@PathVariable ("blogname")String blogname) {
+System.out.println("inside controller getcomments");
+	return blogDAO.getcomments(blogname);
+}
+			
 }

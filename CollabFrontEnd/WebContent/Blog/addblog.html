@@ -1,0 +1,29 @@
+
+
+<div ng-controller="BlogController as ctrl">
+
+	Add Blog:<br>
+	<form name="form" ng-submit="ctrl.addblog()" role="form">
+		
+<label for="">Blog Title:</label>
+<input type="text"	 class="form-control"
+					ng-model="ctrl.blog.blogname" ng-init="ctrl.blog.blogname=editblog.blogname" required /> 		
+
+				
+
+<input type="hidden" 	value="rajesh"  class="form-control"
+					ng-model="ctrl.blog.username"  /> 					
+		
+
+<label for="">Blog Description:</label>
+ <textarea 
+		name="blogdescription" class="form-control"
+		ng-model="ctrl.blog.blogdescription" required  ng-init="ctrl.blog.blogdescription=editblog.blogdescription" cols="50" rows="10"> </textarea>
+			
+			<br>
+	<button type="submit"		
+					class="btn btn-primary">Add Blog</button>
+				
+		</form>
+	</div>
+

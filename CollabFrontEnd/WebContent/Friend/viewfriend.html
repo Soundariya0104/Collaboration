@@ -1,0 +1,10 @@
+<div ng-controller="FriendController as ctrl">
+	Friend List:<br>
+	user page:{{currentUser.username}}-name<br>
+<div ng-repeat="friendlist in ctrl.friends">
+<a  href="#/chat">  Username: {{friendlist.username2}}   ---------------- </a>
+
+<!-- <a  href="#/chat" ng-click="ctrl.getuser(friendlist.username2)"> Username: {{friendlist.username2}}   ---------------- </a> -->
+<a href="#" ng-click="ctrl.unfriend(friendlist.username2)" >unfriend </a>
+</div>
+</div>

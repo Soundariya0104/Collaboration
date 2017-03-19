@@ -11,4 +11,7 @@ public interface FriendDAO {
 	public List<Friend> friendslist(String username);
 	public void unfriend(String username1, String username2);
 
+
+		
+		
 }

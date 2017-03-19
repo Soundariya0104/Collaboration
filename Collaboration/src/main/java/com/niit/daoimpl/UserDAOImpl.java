@@ -49,6 +49,9 @@ return sessionFactory.getCurrentSession().get(User.class, username);
 		
 	}
 	
+	
+
+	
 	//-----------------------------------------------------registration------------------------------------------------------------------------------------------------------------	
 	@Transactional
 	public boolean save(User user) {
