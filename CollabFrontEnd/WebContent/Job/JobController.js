@@ -20,6 +20,22 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
                                        console.log(d)
                             	        self.viewjob = d;
                                
+                            	   self.getapplylist(d.jobname)
+                                     $location.path('/viewjob'); 
+                               },
+                                function(errResponse){
+                                    console.error('Error while get jobs controller');
+                                }
+                       );
+          };
+          
+          function getapplylist(jobname){
+        	  JobService.getapplylist(jobname)
+                  .then(  
+                		       function(d) {
+                            	   console.log('inside getselected')
+                                       console.log(d)
+                            	       
                                      $location.path('/viewjob'); 
                                },
                                 function(errResponse){
@@ -98,7 +114,18 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
                                     console.error('Error while updating Blog.');
                                } 
                    );
-           };   
+           };
+           self.applyjob = function(jobname){
+               JobService.applyjob(jobname)
+                       .then( function(d) {
+                     	  $location.path("/listjob")
+ 							
+ 							 },
+                     		  function(errResponse){
+                                    console.error('Error while updating Blog.');
+                               } 
+                   );
+           };
      self.fetchAlljobs();
  
           self.addjob = function() {
@@ -124,7 +151,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
            
           self.reset = function(){
         	  self.job={jobname:'',jobdescription:'',username:'',jobdateTime:'',jobstatus:'',jobreason:''};
-                
+                // $scope.myForm.$setPristine(); 
           };
  
       }]);

@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.dao.JobDAO;
 import com.niit.model.Job;
+import com.niit.model.JobApply;
 
 
 @EnableTransactionManagement
@@ -76,5 +77,10 @@ return query.list();
 			job=(Job) session.createQuery(hql).uniqueResult();
 			sessionFactory.getCurrentSession().delete(job);
 				}
+	@Transactional
+	public void applyjob(JobApply jobApply){
+		sessionFactory.getCurrentSession().save(jobApply);	
+
+	}
 	
 }

@@ -1,10 +1,13 @@
 <div ng-controller="FriendController as ctrl">
-	Friend List:<br>
-	user page:{{currentUser.username}}-name<br>
+<h3 style="text-align:center"> Friend List</h3><br>
+<h4>{{currentUser.username}} your friends are.... </h4><br><br><br>
 <div ng-repeat="friendlist in ctrl.friends">
-<a  href="#/chat">  Username: {{friendlist.username2}}   ---------------- </a>
-
-<!-- <a  href="#/chat" ng-click="ctrl.getuser(friendlist.username2)"> Username: {{friendlist.username2}}   ---------------- </a> -->
-<a href="#" ng-click="ctrl.unfriend(friendlist.username2)" >unfriend </a>
+<a  href="#/chat" style="color:black">   {{friendlist.username2}} </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#" ng-click="ctrl.unfriend(friendlist.username2)" ><button style="color:black">unfriend </button></a>
+<hr>
 </div>
 </div>

@@ -20,8 +20,8 @@ app.config(function($routeProvider) {
 		    templateUrl : 'Blog/viewblog.html',
 		    controller  : 'BlogController'
 		  })
-		    .when('/userblogs', {
-		    templateUrl : 'Blog/userblogs.html',
+		    .when('/userblog', {
+		    templateUrl : 'Blog/userblog.html',
 		    controller  : 'BlogController'
 		  })
 		    .when('/listblog', {
@@ -50,8 +50,8 @@ app.config(function($routeProvider) {
 		    templateUrl : 'Friend/viewalluser.html',
 		    controller  : 'FriendController'
 		  })
-	  .when('/viewfriends', {
-		    templateUrl : 'Friend/viewfriends.html',
+	  .when('/viewfriend', {
+		    templateUrl : 'Friend/viewfriend.html',
 		    controller  : 'FriendController'
 		  })
 
@@ -71,7 +71,7 @@ app.run( function ($rootScope, $location, $http, $cookieStore) {
 	 $rootScope.$on('$locationChangeStart', function (event, next, current) {
 		 console.log("$locationChangeStart")
 		   
-		 var userPages = ['Blog/addblog','Blog/listblog','Job/addjob','Job/listjob','Job/viewjob','Friend/viewalluser','Friend/viewfriend','Friend/viewnotifications','Chat/chat']
+		 var userPages = ['/addblog','/listblog','/userblog','/addjob','/viewjob','/viewalluser','/viewfriend','/viewnotifications','/chat']
 		 var adminPages = ["/post_job","/manage_users"]
 		 
 		 var currentPage = $location.path()
@@ -123,8 +123,3 @@ app.run( function ($rootScope, $location, $http, $cookieStore) {
      }
 
 });
-
-
- 
-    
-    

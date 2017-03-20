@@ -17,8 +17,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.niit.dao.UserDAO;
 import com.niit.daoimpl.UserDAOImpl;
 import com.niit.model.Blog;
+import com.niit.model.Comment;
 import com.niit.model.Friend;
 import com.niit.model.Job;
+import com.niit.model.JobApply;
+import com.niit.model.Message;
+import com.niit.model.OutputMessage;
 import com.niit.model.User;
 
 
@@ -52,7 +56,10 @@ public class ApplicationContextConfig {
 	sessionBuilder.addAnnotatedClasses(Friend.class);
 	sessionBuilder.addAnnotatedClasses(Job.class);
 	sessionBuilder.addAnnotatedClasses(Blog.class);
-	
+	sessionBuilder.addAnnotatedClasses(JobApply.class);
+	sessionBuilder.addAnnotatedClasses(Comment.class);
+	sessionBuilder.addAnnotatedClasses(OutputMessage.class);
+	sessionBuilder.addAnnotatedClasses(Message.class);	
      return sessionBuilder.buildSessionFactory();
 	}
 	

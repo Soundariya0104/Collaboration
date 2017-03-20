@@ -1,13 +1,29 @@
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
 
 
+</style>
+
+<body>
+<h3 style="text-align:center">Add Job Page</h3>
 <div ng-controller="JobController as ctrl">
-
-	
 	<form name="form" ng-submit="ctrl.addjob()" role="form">
 		
-<label for="">Job Title:</label> 
+<label for="">Job Title</label> 
 <input type="text"	 class="form-control"
-					ng-model="ctrl.job.jobname" ng-init="ctrl.job.jobname=editjob.jobname" required /> 		
+					ng-model="ctrl.job.jobname" ng-init="ctrl.job.jobname=editjob.jobname" required /> 		<br><br>
 
 				
 
@@ -15,16 +31,29 @@
 					ng-model="ctrl.job.username"  /> 					
 		
 
-<label for="">Job Description:</label>
+<label for="">Job Description</label>
  <textarea 
 		name="jobdescription" id="jobdescription" class="form-control"
 		ng-model="ctrl.job.jobdescription" ng-init="ctrl.job.jobdescription=editjob.jobdescription" required  cols="50" rows="10"> </textarea>
 			
 			<br>
 	<button type="submit"		
-					class="btn btn-primary">Add Job</button>
+					class="btn btn-primary">Add job</button>
 				
 		</form>
-	
+<h4>List of Jobs:</h4>
+<table >
+  <tr>
+    <th>Job Title</th>
+    <th>Post By</th>
+    <th>Options</th>
+  </tr>
+  <tr ng-repeat="joblist in ctrl.jobs">
+    <td>{{joblist.jobname}}</td>
+    <td>{{joblist.usename}}</td>
+    <td><a href="#" ng-click="ctrl.deletejob(joblist.jobname)"> Remove</a> &nbsp;&nbsp;&nbsp;<a href="#" ng-click="ctrl.editjob(joblist.jobname)"> Edit</a>   </td>
+  </tr>
+  </table>
 </div>
-
+</body>
+</html>

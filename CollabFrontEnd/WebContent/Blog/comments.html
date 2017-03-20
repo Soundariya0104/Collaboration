@@ -1,10 +1,9 @@
-
 <div ng-controller="BlogController as ctrl">
 
 {{comments}}
 Comments below:{{comment.comments}}<br>
 <div ng-repeat="commentlist in ctrl.comment">
-<a  href="#" ng-click="ctrl.getuser(commentlist.username)"> username: {{comments}}{{commentlist.username}} </a>  <br>
-comment :{{commentlist.comments}}
+<a  href="#" ng-click="ctrl.getuser(commentlist.username)"> Username: {{comments}}{{commentlist.username}} </a>  <br>
+Comment :{{commentlist.comments}}
 <br>------------------------------------------------------------------------------------
 </div></div>

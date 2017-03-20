@@ -1,10 +1,44 @@
+<html>
+<head><style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
 
 
+</style>
+</head>
+<body>
 <div ng-controller="JobController as ctrl">
+<h3 style="text-align:center">Job page</h3>
+<b>	UserName:</b>&nbsp;&nbsp;&nbsp;	{{currentUser.username}}<br><br><br>
 
-		Job Page:{{currentUser.username}}-name<br>
-<div ng-repeat="joblist in ctrl.jobs">
-<a  href="#" ng-click="ctrl.getJob(joblist.jobname)"> job Title: {{joblist.jobname}}    -----------------------------------post by :{{joblist.usename}}---------------- </a>
-</div>
-</div>
 
+<table>
+  <tr>
+    <th>Job Title</th>
+    <th>Post By</th>
+    <th>Options</th>
+    
+  </tr>
+  
+  <tr ng-repeat="joblist in ctrl.jobs">
+  
+    <td><a  href="#/viewjob" ng-click="ctrl.getJob(joblist.jobname)">{{joblist.jobname}}</a></td>
+    <td>{{currentUser.username}}</td>
+    <td><a href="#" ng-click="ctrl.applyjob(joblist.jobname)">Apply</a></td>
+  
+  </tr>
+  
+  </table>
+  </div>
+  </body>
+  </html>
+  

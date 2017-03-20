@@ -70,7 +70,7 @@ app.factory('BlogService', ['$http', '$q','$rootScope','$cookieStore' ,
                                         return response.data;
                                     }, 
                                     function(errResponse){
-                                        console.error('Error while rejecting blog');
+                                        console.error('Error while reject blog');
                                         return $q.reject(errResponse);
                                     }
                             );
@@ -94,7 +94,7 @@ app.factory('BlogService', ['$http', '$q','$rootScope','$cookieStore' ,
                         .then(
                                 function(response){
                                 	$rootScope.selectedBlog = response.data
-                                    return response.data;0
+                                    return response.data;
                                 }, 
                                 function(errResponse){
                                     console.error('Error while getting blog');
@@ -105,7 +105,7 @@ app.factory('BlogService', ['$http', '$q','$rootScope','$cookieStore' ,
         
         
         addcomment: function(comment){
-         console.log('inside addcomemnt blogservices boy'+comment.comments)
+console.log('inside addcomemnt blogservices boy'+comment.comments)
             return $http.post(BASE_URL+'/addcomment',comment)
                     .then(
                             function(response){
@@ -118,7 +118,7 @@ app.factory('BlogService', ['$http', '$q','$rootScope','$cookieStore' ,
                     );
     }, 
     getcomments: function(blogname){
-    	console.log('inside getcomments service')
+    	console.log('inside getcomments service ')
 		
         return $http.get  (BASE_URL+'/getcomments/'+blogname)
                 .then(

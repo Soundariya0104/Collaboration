@@ -1,5 +1,26 @@
-<div class="container" ng-controller="BlogController as ctrl">
-Name{{selectedBlog.blogname}}
-<br> Username: {{selectedBlog.username}}
-<br>Blog Description: {{selectedBlog.blogdescription}}
+<html>
+<body>
+<div ng-controller="BlogController as ctrl">
+
+				<section>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8" id="fh5co-content">
+								<br><br><h2 style="text-align:center">All Blogs</h2>
+								<div class="row"><div ng-repeat="bloglist in ctrl.blogs">
+									<div class="col-md-12">
+										<div class="page-header"><p>
+										<b>Blog Title:</b>{{bloglist.blogname}}  
+										
+		<a href="#" ng-click="ctrl.getBlog(bloglist.blogname)" style="text-align:center"><button>View Blog</button></a>
+   <b><div style="text-align:right">Author :</b> {{bloglist.username}}</div></div>
+									</div>
+									</div>
+								</div>
+
+							</div>
 </div>
+</section>
+</div>
+</body>
+</html>

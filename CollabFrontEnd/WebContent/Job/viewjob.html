@@ -1,4 +1,19 @@
-View Job <div class="container" ng-controller="JobController as ctrl">
-Name : {{selectedjob.jobname}}
-<br> <br>blog description: {{selectedjob.jobdescription}}
+
+<html>
+<head>
+</head>
+<body><h3  style="text-align:center">View Job Page</h3><br>
+<div class="container" ng-controller="JobController as ctrl">
+<b> Job Name:</b>&nbsp;&nbsp;&nbsp;{{selectedjob.jobname}}<br><br>
+<b>Job Description:</b><br><br>
+&nbsp;&nbsp;&nbsp;{{selectedjob.jobdescription}}
 </div>
+<br>
+<b>Applicants Name:</b>
+<br>
+<div ng-repeat="applylist in ctrl.apply">
+<a  href="#" ng-click="ctrl.getUser(applylist.username)"> Job Title: {{applylist.username}}</a><br>   
+</div>
+
+</body>
+</html>

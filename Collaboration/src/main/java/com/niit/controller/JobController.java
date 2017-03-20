@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.dao.JobDAO;
 import com.niit.model.Job;
+import com.niit.model.JobApply;
 
 
 @RestController
@@ -31,6 +32,8 @@ public class JobController {
 	private Job job;
 	@Autowired
 	private JobDAO jobDAO;
+	@Autowired
+	private JobApply jobApply;
 	
 	@GetMapping("/fetchallJobs")
 	public List<Job> getallJob(){
@@ -80,5 +83,14 @@ public class JobController {
 		
 	System.out.println("hii am job"+jobname);
 	jobDAO.deletejob(jobname);
+}
+
+@GetMapping(value = "/applyjob/{jobname}")
+public void apply(@PathVariable("jobname")String jobname, HttpSession session) {
+String username = (String) session.getAttribute("Username");
+jobApply.setUsername(username);
+jobApply.setJobname(jobname);
+jobDAO.applyjob(jobApply);
+
 }
 }

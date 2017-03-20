@@ -132,7 +132,7 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
 							.then(
 									function(d) {
 										self.userblog = d;
-										console.log('getting userblog my boy')
+										console.log('getting userblog ')
 										console.log(d)
 										
 									},
@@ -171,7 +171,7 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
 						.addcomment(comment)
 						.then(
 								function(d) {
-							//self.getcomments(commment.blogname)
+							//self.getcomments(commmentModel.blogname)
 								//	$route.reload();
 								},
 								function(errResponse) {
@@ -189,10 +189,9 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
 						.then(
 								
 								function(d) {
-									console.log('hiii amd inside function of getcomment')
+									console.log('hiii am inside function of getcomment')
 									self.comment = d;
 									console.log(d)
-									$location.path("/comments")
 									
 								},
 								function(errResponse) {
@@ -219,7 +218,7 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
 
           self.getcomments = function() {
            
-                  self.getcomment('sample');
+                  self.getcomment('sampe');
               	self.reset();
 				
             

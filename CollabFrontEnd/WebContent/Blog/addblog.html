@@ -1,29 +1,58 @@
 
-
+		
 <div ng-controller="BlogController as ctrl">
 
-	Add Blog:<br>
-	<form name="form" ng-submit="ctrl.addblog()" role="form">
-		
-<label for="">Blog Title:</label>
-<input type="text"	 class="form-control"
-					ng-model="ctrl.blog.blogname" ng-init="ctrl.blog.blogname=editblog.blogname" required /> 		
+
+
+<h3 style="text-align:center">Add Blog</h3>
+
 
 				
+				<section>
+					<div class="container">
+						
+						<div class="row">
 
-<input type="hidden" 	value="rajesh"  class="form-control"
-					ng-model="ctrl.blog.username"  /> 					
-		
+							<div class="fh5co-spacer fh5co-spacer-sm"></div>	
+							<div class="col-md-8">
+								<form ng-submit="ctrl.addblog()">
+									<div class="col-md-12">
+										<div class="form-group">
+											<h4>Blog Title:</h4>
+											<input placeholder="Give a title here" id="name" type="text" ng-model="ctrl.blog.blogname" class="form-control input-lg">
+										</div>	
+									</div>
+									
+									<div class="col-md-12">
+										<div class="form-group">
+											<h4>Blog Description:</h4>
+											<textarea placeholder="Enter Blog Content here" id="message" class="form-control input-lg" ng-model="ctrl.blog.blogdescription"rows="7"></textarea>
+										</div>	
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="submit" class="btn btn-primary btn-lg " value="Add Blog">
 
-<label for="">Blog Description:</label>
- <textarea 
-		name="blogdescription" class="form-control"
-		ng-model="ctrl.blog.blogdescription" required  ng-init="ctrl.blog.blogdescription=editblog.blogdescription" cols="50" rows="10"> </textarea>
+										</div>	
+									</div>
+									
+									
+								</form>	
+								
+							</div>
+							
+						</div>
+						
+					</div>
+				</section>
+
+
+</div>
+
+
+
 			
-			<br>
-	<button type="submit"		
-					class="btn btn-primary">Add Blog</button>
-				
-		</form>
-	</div>
+			
+		
+			
 

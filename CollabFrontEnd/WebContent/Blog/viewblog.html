@@ -1,13 +1,14 @@
+<b><h3 style="text-align:center">View Blog Page</h3></b>
 <div class="container" ng-controller="BlogController as ctrl">
-Blog-Name:{{selectedBlog.blogname}}
-<br> user-name: {{selectedBlog.usename}}
-<br>blogdescription: {{selectedBlog.blogdescription}}
-	
+Blog-Name:{{selectedBlog.blogname}}<br>
+<br> User-name: {{selectedBlog.usename}}<br>
+<br>Blog-Description: {{selectedBlog.blogdescription}}
+	<br><br>
 	<form name="form" ng-submit="ctrl.addcomments()" role="form">
 <label for="">Comment:</label>
  <textarea 
 		 class="form-control"
-		ng-model="ctrl.comment.comments"   cols="50" rows="10"> </textarea>
+		ng-model="ctrl.comment.comments"   style="width:500px" rows="5"> </textarea>
 			
 			<br>
 	<button type="submit"		
@@ -16,10 +17,10 @@ Blog-Name:{{selectedBlog.blogname}}
 
 
 
-Comments below:{{comment.comments}}<br>
+<b>Comments below:</b>{{comment.comments}}<br>
 <div ng-repeat="commentlist in ctrl.comment">
 <a  href="#" ng-click="ctrl.getuser(commentlist.username)"> username: {{commentlist.username}} </a>  <br>
-Comment :{{commentlist.comments}}
+comment :{{commentlist.comments}}
 <br>------------------------------------------------------------------------------------
 </div>
 
@@ -27,6 +28,5 @@ Comment :{{commentlist.comments}}
 BLOG page:{{currentUser.username}}-name<br>
 <div ng-repeat="bloglist in ctrl.blogs">
 <a  href="#" ng-click="ctrl.getBlog(bloglist.blogname)"> Blog Title: {{bloglist.blogname}}    -----------------------------------Author :{{bloglist.usename}}---------------- </a>
-</div>
 </div>
 </div>
