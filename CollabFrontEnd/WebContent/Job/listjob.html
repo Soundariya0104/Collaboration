@@ -24,7 +24,6 @@ td, th {
 <table>
   <tr>
     <th>Job Title</th>
-    <th>Post By</th>
     <th>Options</th>
     
   </tr>
@@ -32,8 +31,7 @@ td, th {
   <tr ng-repeat="joblist in ctrl.jobs">
   
     <td><a  href="#/viewjob" ng-click="ctrl.getJob(joblist.jobname)">{{joblist.jobname}}</a></td>
-    <td>{{currentUser.username}}</td>
-    <td><a href="#" ng-click="ctrl.applyjob(joblist.jobname)">Apply</a></td>
+    <td><a href="#/listjobapply" ng-click="ctrl.applyjob(joblist.jobname)">Apply</a></td>
   
   </tr>
   

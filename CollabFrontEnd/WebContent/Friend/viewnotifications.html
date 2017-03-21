@@ -1,10 +1,10 @@
 <div ng-controller="FriendController as ctrl">
 	<h3 style="text-align:center">Friend page</h3>
-	{{currentUser.username}} You have the following Notifications!!<br>
+	{{currentUser.username}} You have the following Notifications!!<br><br>
 <div ng-repeat="friendlist in ctrl.friendsnotify">
-<a  href="#" ng-click="ctrl.getfriend(friendlist.username1)"> {{friendlist.username1}} </a>
-<a href="#" ng-click="ctrl.acceptfriend(friendlist.username1)" >Accept request</a>
-<a href="#" ng-click="ctrl.rejectFriend(friendlist.username1)" >Reject request</a>
+<a  href="#" ng-click="ctrl.getfriend(friendlist.username1)" style="color:black"> {{friendlist.username1}} </a>
+<a href="#" ng-click="ctrl.acceptfriend(friendlist.username1)" ><button>Accept request</button></a>
+<a href="#" ng-click="ctrl.rejectFriend(friendlist.username1)" ><button>Reject request</button></a>
 <hr>
 </div>
 </div>

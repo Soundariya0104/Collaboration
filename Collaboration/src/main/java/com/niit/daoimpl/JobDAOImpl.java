@@ -83,4 +83,13 @@ return query.list();
 
 	}
 	
+	@Transactional
+	public List<JobApply> applyjobbyid(String username){
+		String hql = "from JobApply where username = '" + username + "'" ;
+		List<JobApply> list= sessionFactory.openSession().createQuery(hql).list();
+
+		return list;
+
+	}
+	
 }

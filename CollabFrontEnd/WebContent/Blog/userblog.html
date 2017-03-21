@@ -1,13 +1,15 @@
-
-
+<h3 style="text-align:center">My Blogs</h3>
 
 <div ng-controller="BlogController as ctrl">
 
 	
-BLOG page:{{currentUser.username}}-name<br>
+{{currentUser.username}} Your blogs are listed below!! <br><br>
+<br>
 <div ng-repeat="bloglist in ctrl.userblog">
-<a  href="#" ng-click="ctrl.getBlog(bloglist.blogname)"> Blog Title: {{bloglist.blogname}} --------Author :{{bloglist.usename}}---------------- </a>  
-<a href="#" ng-click="ctrl.deleteBlog(bloglist.blogname)"> Remove</a>--<a href="#" ng-click="ctrl.editBlog(bloglist.blogname)"> Edit</a>
+<a  href="#" ng-click="ctrl.getBlog(bloglist.blogname)"> Blog Title: {{bloglist.blogname}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Author :{{bloglist.usename}}</a>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" ng-click="ctrl.deleteBlog(bloglist.blogname)"> <button>Remove</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" ng-click="ctrl.editBlog(bloglist.blogname)"> <button>Edit</button></a>
+<hr>
 </div>
+
 </div>
 

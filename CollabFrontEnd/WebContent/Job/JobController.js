@@ -8,7 +8,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
           self.jobs=[];
           self.viewjob=[];
           self.editjob=[];
-          
+          self.appliedjob=[];
          self.getJob = getjob
 
 //-------------------------------------------------------------------------GET job ---------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
                             	   console.log('inside getselected')
                                        console.log(d)
                             	       
-                                     $location.path('/viewjob'); 
+                                     $location.path('/listapplyjob'); 
                                },
                                 function(errResponse){
                                     console.error('Error while get jobs controller');
@@ -78,7 +78,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
 												
 												self.fetchAlljobs(); 
 										self.reset();
-													$location.path('/addjob');
+													$location.path('/listjob');
 												
 
 									}}
@@ -107,7 +107,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
            self.deletejob = function(jobname){
                JobService.deletejob(jobname)
                        .then( function(d) {
-                     	  $location.path("/addjob")
+                     	  $location.path("/listjob")
  							
  							 },
                      		  function(errResponse){
@@ -118,7 +118,7 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
            self.applyjob = function(jobname){
                JobService.applyjob(jobname)
                        .then( function(d) {
-                     	  $location.path("/listjob")
+                     	  $location.path("/listjobapply")
  							
  							 },
                      		  function(errResponse){
@@ -126,6 +126,19 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
                                } 
                    );
            };
+           
+           self.applyjobbyid= function(){
+        	   JobService.applyjobbyid().then(function(d)
+        		{console.log('inside apply job by id')
+        		   console.log(d)
+        		   self.appliedjob = d;
+                
+        		   
+        		}	   
+        	   )
+           }
+           
+           
      self.fetchAlljobs();
  
           self.addjob = function() {
@@ -148,10 +161,10 @@ app.controller('JobController', ['$scope', 'JobService','$location','$rootScope'
           };
                
          
-           
+           self.applyjobbyid();
           self.reset = function(){
         	  self.job={jobname:'',jobdescription:'',username:'',jobdateTime:'',jobstatus:'',jobreason:''};
-                // $scope.myForm.$setPristine(); 
+             //    $scope.myForm.$setPristine(); 
           };
  
       }]);

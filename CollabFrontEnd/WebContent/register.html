@@ -6,30 +6,31 @@
 				
 <label for="">Username</label> 
 <input type="text"	name="username" id="username" class="form-control"
-					ng-model="ctrl.user.username" required /> 					
+					ng-model="ctrl.user.username" placeholder="Enter Username" required /> 					
 		<br>
 <label for="">First Name</label> 
 <input type="text"	name="firstname" id="firstname" class="form-control"
-					ng-model="ctrl.user.firstname" required /> 					
+					ng-model="ctrl.user.firstname" placeholder="Enter First Name" required /> 					
 		<br>
 <label for="">Second Name</label> 
 <input type="text"	name="secondname" id="secondname" class="form-control"
-					ng-model="ctrl.user.secondname" required /> 					
+					ng-model="ctrl.user.secondname" placeholder="Enter Second Name" required /> 					
 		<br>
 <label for="">Email Id:</label> 
-<input type="text"	name="email" id="email" class="form-control"
-					ng-model="ctrl.user.email" required /> 					
+<input type="email"	name="email" id="email" class="form-control"
+					ng-model="ctrl.user.email" placeholder="Enter EmailId" required /> 					
 		<br>
 <label for="">Mobile No:</label> 
 <input type="text"	name="mobile" id="mobile" class="form-control"
-					ng-model="ctrl.user.mobile" required /> 					
+					ng-model="ctrl.user.mobile" minlength="10" maxlength="10" placeholder="Enter mobilenumber" required /> 					
 		<br>
 
 <label for="">Password</label> <input type="password"
 		name="password" id="password" class="form-control"
-		ng-model="ctrl.user.password" required /> 
+		ng-model="ctrl.user.password" placeholder="Enter password" required /> 
 			<br>			
-<a href="#/login" style="text-color:black">	<button type="submit"		
-					class="btn btn-primary" >Register</button></a>
+	<input type="submit"		
+					class="btn btn-primary" value="Register"/>
 		
 		</form>
+</div>

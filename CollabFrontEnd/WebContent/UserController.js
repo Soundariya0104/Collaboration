@@ -1,4 +1,4 @@
-app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootScope','$cookieStore',						'$http',
+app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootScope','$cookieStore','$http',
 						function($scope, UserService, $location, $rootScope,$cookieStore,
 								$http) {
 							console.log("UserController...")
@@ -20,11 +20,8 @@ app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootSc
 							
 							this.users = []; //json array
 							
-							 $scope.orderByMe = function(x) {
-							        $scope.myOrderBy = x;
-							    }
-
 							self.createUser = function(user) {
+						console.log('inside register')
 								UserService
 										.createUser(user)
 										.then(
@@ -38,20 +35,7 @@ app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootSc
 													
 												});
 							};							
-							self.createblog = function(user) {
-								UserService
-										.createblog(user)
-										.then(
-												function(d)
-												{
-													alert("Thank you for registration")
-												},
-												function(errResponse) {
-													console
-													alert("not registered")
-													
-												});
-							};							
+						
 
 							self.authenticate = function(user) {
 								console.log("authenticate...")
@@ -84,17 +68,20 @@ app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootSc
 												});
 							};
 
-							self.logout = function() {
-								console.log("logout")
+							self.logouts = function() {
+								console.log("inside logout")
+UserService.logout().then(
+		function(d){
 //								$rootScope.currentUser = {};
 								 $rootScope.currentUser = undefined
-							//	$cookieStore.remove('currentUser');
-								UserService.logout()
-								$location.path('/');
+								$cookieStore.remove('currentUser');
+								//UserService.logout()
+								//$location.path('/login');
+								 $location.path('/');
+									
+							});
 
-							}
-
-						
+							};
 
 							
 							self.login = function() {
@@ -107,16 +94,16 @@ app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootSc
 								{
 									self.createUser(self.user);
 								}
-								self.reset();
 							};
 
-
-							self.adddblog = function() {
+							self.logout = function() {
 								{
-									self.createblog(self.user);
+									self.logouts();
 								}
-								self.reset();
 							};
+
+
+						
 
 						
 						} ]);

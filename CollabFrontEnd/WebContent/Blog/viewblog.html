@@ -4,29 +4,33 @@ Blog-Name:{{selectedBlog.blogname}}<br>
 <br> User-name: {{selectedBlog.usename}}<br>
 <br>Blog-Description: {{selectedBlog.blogdescription}}
 	<br><br>
-	<form name="form" ng-submit="ctrl.addcomments()" role="form">
-<label for="">Comment:</label>
- <textarea 
-		 class="form-control"
-		ng-model="ctrl.comment.comments"   style="width:500px" rows="5"> </textarea>
+<!-- 	<form name="form" ng-submit="ctrl.addcomments()" role="form"> -->
+<!-- <label for="">Comment:</label> -->
+<!--  <textarea  -->
+<!-- 		 class="form-control" -->
+<!-- 		ng-model="ctrl.comment.comments"   style="width:500px" rows="5"> </textarea> -->
 			
-			<br>
-	<button type="submit"		
-					class="btn btn-primary">Add comment</button>
-		</form>
+<!-- 			<br> -->
+<!-- 	<button type="submit"		 -->
+<!-- 					class="btn btn-primary">Add comment</button> -->
+<!-- 		</form> -->
 
 
 
-<b>Comments below:</b>{{comment.comments}}<br>
-<div ng-repeat="commentlist in ctrl.comment">
-<a  href="#" ng-click="ctrl.getuser(commentlist.username)"> username: {{commentlist.username}} </a>  <br>
-comment :{{commentlist.comments}}
-<br>------------------------------------------------------------------------------------
-</div>
+<!-- <b>Comments below:</b>{{comment.comments}}<br> -->
+<!-- <div ng-repeat="commentlist in ctrl.comment"> -->
+<!-- <a  href="#" ng-click="ctrl.getuser(commentlist.username)"> username: {{commentlist.username}} </a>  <br> -->
+<!-- comment :{{commentlist.comments}} -->
+<!-- <br>------------------------------------------------------------------------------------ -->
+<!-- </div> -->
 
 <br>
-BLOG page:{{currentUser.username}}-name<br>
+<b>List of BLOGS:</b>{{currentUser.username}}<br><br>
+<br>
 <div ng-repeat="bloglist in ctrl.blogs">
-<a  href="#" ng-click="ctrl.getBlog(bloglist.blogname)"> Blog Title: {{bloglist.blogname}}    -----------------------------------Author :{{bloglist.usename}}---------------- </a>
+Blog Title:&nbsp;&nbsp;&nbsp;<a  href="#" ng-click="ctrl.getBlog(bloglist.blogname)" style="color:black">  {{bloglist.blogname}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author:&nbsp;&nbsp;&nbsp;{{bloglist.usename}}</a>
+<hr>
 </div>
 </div>

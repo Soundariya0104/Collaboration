@@ -51,20 +51,23 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "/validate", method = RequestMethod.POST)
-	public ResponseEntity<User> validateCredentials(@RequestBody User user, HttpSession session){
-		
-		if(userDAO.validate(user.getUsername(), user.getPassword()) == null){
+	public User validateCredentials(@RequestBody User user, HttpSession session){
+User userModel2= new User();
+userModel2=userDAO.validate(user.getUsername(), user.getPassword());
+		if(userModel2 == null){
 			user=new User();
 			user.setErrorCode("404");
-			user.setErrorMessage("Invalid Credential...please try again");
+			user.setErrorMessage("Invalid Credential....please try again");
 			
 		}else{
+			
+			//userDAO.saveonline(userModel2);
 			user.setErrorCode("200");
-			user.setErrorMessage("You are successfully logged in ....");
+			user.setErrorMessage("You are succesfully logged in ....");
 			session.setAttribute("Username", user.getUsername());
 			
 				}
-return new ResponseEntity<User>(user, HttpStatus.OK);
+return userModel2;
 }
 
 	
@@ -100,6 +103,14 @@ return new ResponseEntity<User>(user, HttpStatus.OK);
 	return new ResponseEntity<User>(user,HttpStatus.OK);  
 			}
 	
+	@GetMapping("/logout")
+	public void logout(HttpSession session){
+		String username = (String) session.getAttribute("Username");
+		//userDAO.offline(username);
+		session.invalidate();
+
+	
+}
 }
 
 

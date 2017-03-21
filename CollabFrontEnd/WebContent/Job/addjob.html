@@ -45,12 +45,10 @@ td, th {
 <table >
   <tr>
     <th>Job Title</th>
-    <th>Post By</th>
     <th>Options</th>
   </tr>
   <tr ng-repeat="joblist in ctrl.jobs">
     <td>{{joblist.jobname}}</td>
-    <td>{{joblist.usename}}</td>
     <td><a href="#" ng-click="ctrl.deletejob(joblist.jobname)"> Remove</a> &nbsp;&nbsp;&nbsp;<a href="#" ng-click="ctrl.editjob(joblist.jobname)"> Edit</a>   </td>
   </tr>
   </table>
