@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -21,8 +22,6 @@ import com.niit.model.Comment;
 import com.niit.model.Friend;
 import com.niit.model.Job;
 import com.niit.model.JobApply;
-import com.niit.model.Message;
-import com.niit.model.OutputMessage;
 import com.niit.model.User;
 
 
@@ -55,11 +54,10 @@ public class ApplicationContextConfig {
 	sessionBuilder.addAnnotatedClasses(User.class);
 	sessionBuilder.addAnnotatedClasses(Friend.class);
 	sessionBuilder.addAnnotatedClasses(Job.class);
-	sessionBuilder.addAnnotatedClasses(Blog.class);
-	sessionBuilder.addAnnotatedClasses(JobApply.class);
 	sessionBuilder.addAnnotatedClasses(Comment.class);
-	sessionBuilder.addAnnotatedClasses(OutputMessage.class);
-	sessionBuilder.addAnnotatedClasses(Message.class);	
+	sessionBuilder.addAnnotatedClasses(JobApply.class);
+	sessionBuilder.addAnnotatedClasses(Blog.class);
+	
      return sessionBuilder.buildSessionFactory();
 	}
 	
@@ -76,4 +74,20 @@ public class ApplicationContextConfig {
 	   public UserDAO getCategoryDao(SessionFactory sessionFactory) {
 	   return new UserDAOImpl(sessionFactory);
 	   }
+	@Bean
+	public JavaMailSenderImpl javaMailSenderImpl(){
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost("smtp.gmail.com");
+		mailSender.setPort(587);
+		mailSender.setUsername("soundariya0104@gmail.com");
+		mailSender.setPassword("balaji1234");
+		Properties prop = mailSender.getJavaMailProperties();
+		prop.put("mail.transport.protocol", "smtp");
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.debug", "true");
+		return mailSender;
+	}
+
+	
 }

@@ -1,13 +1,27 @@
 <div ng-controller="FriendController as ctrl">
-<h3 style="text-align:center"> Friend List</h3><br>
-<h4>{{currentUser.username}} your friends are.... </h4><br><br><br>
-<div ng-repeat="friendlist in ctrl.friends">
-<a  href="#/chat" style="color:black">   {{friendlist.username2}} </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="#" ng-click="ctrl.unfriend(friendlist.username2)" ><button style="color:black">unfriend </button></a>
-<hr>
-</div>
+		<section>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8" id="fh5co-content">
+								<br><br><h2>My Friends<input type="text"
+		 id="text" placeholder="Search Friends here" class="form-control"
+		ng-model="searchText" style="width:50%;position:relative;left:460px" /> </h2>
+							
+								<div class="row"><div ng-repeat="userlist in ctrl.friends|filter:searchText">
+									<div class="col-md-12">
+										<div class="page-header"><p><span class="glyphicon glyphicon-align-left"></span>
+										<b>Profile :</b><font style="font-size:25px;">&nbsp;&nbsp;&nbsp;{{userlist.username2}}</font></p> 
+						
+<!-- 		<a href="#" ng-click="ctrl.getuser(userlist.username2)">View Profile</a> -->
+<a href="#" ng-click="ctrl.unfriend(userlist.username2)"><b>Unfriend</b></a>
+<div ng-if="userlist.is_online=='y' "><b>Online</b>	 </div>
+<div ng-if="userlist.is_online=='N' "><b>Offline	</b> </div>
+
+									</div>
+									</div>
+								</div>
+
+							</div></div></div>
+							</div>					
+				</section>
 </div>

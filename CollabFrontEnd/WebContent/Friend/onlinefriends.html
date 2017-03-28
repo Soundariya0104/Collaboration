@@ -1,0 +1,13 @@
+							
+							
+<div ng-controller="FriendController as ctrl">
+								<br><br><h2>All Users</h2>
+								<div ng-repeat="userlist in ctrl.onlinefriends">
+										
+										<b>Profile :</b><font style="font-size:25px;">&nbsp;&nbsp;&nbsp;{{userlist.firstname}}&nbsp;&nbsp;{{userlist.secondname}}</font></p> 
+						
+		<a href="#" ng-click="ctrl.getuser(userlist.username)">View Profile</a>
+<a href="#/chat">Chat</a>
+</div>
+</div>
+	

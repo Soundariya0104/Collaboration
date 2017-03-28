@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,9 +30,10 @@ public class JobController {
 	@Autowired
 	private Job job;
 	@Autowired
-	private JobDAO jobDAO;
-	@Autowired
 	private JobApply jobApply;
+
+	@Autowired
+	private JobDAO jobDAO;
 	
 	@GetMapping("/fetchallJobs")
 	public List<Job> getallJob(){
@@ -86,19 +86,21 @@ public class JobController {
 }
 
 @GetMapping(value = "/applyjob/{jobname}")
-public void apply(@PathVariable("jobname")String jobname, HttpSession session) {
-String username = (String) session.getAttribute("Username");
+	public void apply(@PathVariable("jobname")String jobname, HttpSession session) {
+	String username = (String) session.getAttribute("Username");
 jobApply.setUsername(username);
 jobApply.setJobname(jobname);
 jobDAO.applyjob(jobApply);
 
 }
 
+
 @GetMapping(value = "/applyjobbyid")
-public List<JobApply> applybyuid(HttpSession session) {
-String username = (String) session.getAttribute("Username");
+	public List<JobApply> applybyuid(HttpSession session) {
+	String username = (String) session.getAttribute("Username");
 jobApply.setUsername(username);
 return jobDAO.applyjobbyid(username);
 
 }
+
 }

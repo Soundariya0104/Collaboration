@@ -2,13 +2,11 @@
   font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
 }
-
 .container {
   max-width: 1000px;
   margin: 0 auto;
   width: 80%;
 }
-
 input[type=text] {
   width: 100%;
   border: solid 1px #D4D4D1;
@@ -17,7 +15,6 @@ input[type=text] {
   padding: 0.3em;
   margin: 0.2em 0;
 }
-
 input[type=text]:focus {
   -webkit-box-shadow: 0 0 5px 0 rgba(69, 155, 231, .75);
   -moz-box-shadow: 0 0 5px 0 rgba(69, 155, 231, .75);
@@ -25,17 +22,14 @@ input[type=text]:focus {
   border-color: #459be7;
   outline: none;
 }
-
 .info {
   float: right;
 }
-
 form:after {
   display: block;
   content: '';
   clear: both;
 }
-
 button {
   background: #459be7;
   color: #FFF;
@@ -48,47 +42,38 @@ button {
   cursor: pointer;
   transition: .7s;
 }
-
 button:focus {
   outline: none;
 }
-
 button:hover {
   background: #1c82dd;
 }
-
 button:disabled {
   background-color: #90BFE8;
   cursor: not-allowed;
 }
-
 .count {
   font-weight: 300;
   font-size: 1.35em;
   color: #CCC;
   transition: .7s;
 }
-
 .count.danger {
   color: #a94442;
   font-weight: 600;
 }
-
 .message time {
   width: 80px;
   color: #999;
   display: block;
   float: left;
 }
-
 .message {
   margin: 0;
 }
-
 .message .self {
   font-weight: 600;
 }
-
 .message span {
   width: calc(100% - 80px);
   display: block;
@@ -97,8 +82,7 @@ button:disabled {
   border-left: solid 1px #F1F1F1;
   padding-bottom: .5em;
 }
-
-hr {
+hr { 
   display: block;
   height: 1px;
   border: 0;
@@ -107,9 +91,10 @@ hr {
   padding: 0;
 }
 </style>
+
     <div ng-controller="ChatController" class="container">
-      <form ng-submit="addMessage()" name="messageForm">
-        <input type="text" placeholder="Compose a new message..." ng-model="message" />
+<br><br><br><br><br>      <form ng-submit="addMessage()" name="messageForm">
+        <input type="text" placeholder="Chat here......" ng-model="message" />
         <div class="info">
           <span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
           <button ng-disabled="message.length > max || message.length === 0">Send</button>
@@ -124,4 +109,4 @@ hr {
     </div>
    
   
-   
+ 

@@ -2,7 +2,8 @@
 var app = angular.module('myApp', [ 'ngRoute','ngCookies']);
 app.config(function($routeProvider) {
 	$routeProvider
-  	
+
+		  	
  .when('/login', {
     templateUrl : 'login.html',
     controller  : 'UserController'
@@ -54,7 +55,7 @@ app.config(function($routeProvider) {
 		    templateUrl : 'Friend/viewalluser.html',
 		    controller  : 'FriendController'
 		  })
-	  .when('/viewfriend', {
+	  .when('/viewfriends', {
 		    templateUrl : 'Friend/viewfriend.html',
 		    controller  : 'FriendController'
 		  })
@@ -132,8 +133,3 @@ app.run( function ($rootScope, $location, $http, $cookieStore) {
 //     }
 
 });
-
-
- 
-    
-    

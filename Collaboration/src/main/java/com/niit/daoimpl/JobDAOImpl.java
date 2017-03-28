@@ -77,12 +77,13 @@ return query.list();
 			job=(Job) session.createQuery(hql).uniqueResult();
 			sessionFactory.getCurrentSession().delete(job);
 				}
+
+	//------------------------------------------------------SAVE Job---------------------------------------------------------------
 	@Transactional
 	public void applyjob(JobApply jobApply){
 		sessionFactory.getCurrentSession().save(jobApply);	
 
 	}
-	
 	@Transactional
 	public List<JobApply> applyjobbyid(String username){
 		String hql = "from JobApply where username = '" + username + "'" ;

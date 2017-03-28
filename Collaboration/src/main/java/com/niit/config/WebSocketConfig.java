@@ -1,4 +1,4 @@
-package com.niit.config;
+ package com.niit.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

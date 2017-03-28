@@ -7,11 +7,14 @@ import com.niit.model.User;
 public interface UserDAO{
 
 	public User get(String userid);
-	
 	public User  validate(String userid, String password);
+	//public boolean  validate(String userid, String password);
 	
 	public boolean save(User user);
-	
 	public List<User> list();
+	public boolean saveonline(User user);
+	public boolean offline(String username);
+		
+		
 
 }

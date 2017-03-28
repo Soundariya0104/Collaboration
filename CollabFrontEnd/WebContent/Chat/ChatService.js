@@ -38,10 +38,6 @@ app.service("ChatService", function($q, $timeout) {
       var message = JSON.parse(data), out = {};
       out.message = message.message;
       out.time = new Date(message.time);
-     /* if (_.contains(messageIds, message.id)) {
-        out.self = true;
-        messageIds = _.remove(messageIds, message.id);
-      }*/
       return out;
     };
     

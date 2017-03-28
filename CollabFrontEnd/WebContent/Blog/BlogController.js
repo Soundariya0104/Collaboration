@@ -1,6 +1,7 @@
 app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScope','$cookieStore',
             function($scope, BlogService,$location,$routeParams,$rootScope,$cookieStore) {
-	console.log("inside BlogController...")
+	console.log("inside Blo" +
+			"gController...")
           var self = this;
           self.blog={blogname:'',blogdescription:'',username:'',blogdateTime:'',blogstatus:'',blogreason:''};
         self.comment={comments:'',username:'',commentid:''}
@@ -189,7 +190,7 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
 						.then(
 								
 								function(d) {
-									console.log('hiii am inside function of getcomment')
+									console.log('hiii amd inside function of getcomment')
 									self.comment = d;
 									console.log(d)
 									
@@ -218,11 +219,13 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
 
           self.getcomments = function() {
            
-                  self.getcomment('sampe');
+                  self.getcomment('sample');
               	self.reset();
 				
             
-          }; 
+          };
+          
+          
           self.addcomments = function() {
               
               self.addcomment(self.comment);
@@ -230,11 +233,8 @@ app.controller('BlogController', ['$scope', 'BlogService','$location','$rootScop
 			
         
       };
-    
-               
-          
-           
-          self.reset = function(){
+
+      self.reset = function(){
         	  self.blog={blogname:'',blogdescription:'',username:'',blogdateTime:'',blogstatus:'',blogreason:''};
                 // $scope.myForm.$setPristine(); 
           };

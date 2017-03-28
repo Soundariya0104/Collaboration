@@ -21,18 +21,20 @@ app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootSc
 							this.users = []; //json array
 							
 							self.createUser = function(user) {
-						console.log('inside register')
 								UserService
 										.createUser(user)
 										.then(
 												function(d)
-												{
+												
+												{   	
+													self.user = d;
+
+													console.log("hiiii"+self.user.errorCode)
+													if(self.user.errorCode!="404"){
 													alert("Thank you for registration")
-												},
-												function(errResponse) {
-													console
-													alert("not registered")
-													
+													}else{
+														alert(self.user.username +" already exist, Try new username")	
+													}														
 												});
 							};							
 						
@@ -44,11 +46,14 @@ app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootSc
 										.then(
 
 												function(d) {
-													
+
 													self.user = d;
+													console.log(self.user.errorMessage+"invalid "+self.user.errorCode)
+
 													if (self.user.errorCode == "404")
 
 													{
+														console.log(self.user.errorMessage+"invalid "+self.user.errorCode)
 														alert(self.user.errorMessage)
 
 														self.user.username = "";
@@ -70,17 +75,16 @@ app.controller(	'UserController', [	'$scope', 'UserService','$location','$rootSc
 
 							self.logouts = function() {
 								console.log("inside logout")
-UserService.logout().then(
-		function(d){
+                            UserService.logout().then(
+		                        function(d){
 //								$rootScope.currentUser = {};
 								 $rootScope.currentUser = undefined
 								$cookieStore.remove('currentUser');
 								//UserService.logout()
 								//$location.path('/login');
-								 $location.path('/');
+								 $location.path('/index');
 									
 							});
-
 							};
 
 							
@@ -107,4 +111,3 @@ UserService.logout().then(
 
 						
 						} ]);
-
