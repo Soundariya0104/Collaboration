@@ -43,6 +43,7 @@
 <!--       <a class="navbar-brand" href="#">Collobration site</a> -->
     </div>
     <ul class="nav navbar-nav">
+    <li class=""><a href="#">KiwiBox</a>
       <li class="active"><a href="#">Home</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="">Blog
@@ -84,7 +85,7 @@
 <div ng-if="$root.currentUser.username.length ">
   <ul class="nav navbar-nav navbar-right">
 
-      <li class=""><a href="#">{{currentUser.username}}'s account</a></li>
+      <li class=""><a href="#/userpage">{{currentUser.username}}'s account</a></li>
       <li class=""><a href="#/logout" ng-click="ctrl.logout()">Logout</a></li>
 </div>      
        </ul>

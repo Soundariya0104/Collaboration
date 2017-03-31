@@ -13,6 +13,11 @@ app.config(function($routeProvider) {
 	    templateUrl : 'register.html',
 	    controller  : 'UserController'
 	  })
+	  
+	  .when('/userpage', {
+	    templateUrl : 'userpage.html',
+	    controller  : 'UserController'
+	  })
 	  .when('/addblog', {
 		    templateUrl : 'Blog/addblog.html',
 		    controller  : 'BlogController'
@@ -55,7 +60,7 @@ app.config(function($routeProvider) {
 		    templateUrl : 'Friend/viewalluser.html',
 		    controller  : 'FriendController'
 		  })
-	  .when('/viewfriends', {
+	  .when('/viewfriend', {
 		    templateUrl : 'Friend/viewfriend.html',
 		    controller  : 'FriendController'
 		  })

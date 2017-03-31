@@ -1,21 +1,5 @@
 <html>
 <head>
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-
-</style>
-
 <body>
 <h3 style="text-align:center">Add Job Page</h3>
 <div ng-controller="JobController as ctrl">
@@ -41,17 +25,6 @@ td, th {
 					class="btn btn-primary">Add job</button>
 				
 		</form>
-<h4>List of Jobs:</h4>
-<table >
-  <tr>
-    <th>Job Title</th>
-    <th>Options</th>
-  </tr>
-  <tr ng-repeat="joblist in ctrl.jobs">
-    <td>{{joblist.jobname}}</td>
-    <td><a href="#" ng-click="ctrl.deletejob(joblist.jobname)"> Remove</a> &nbsp;&nbsp;&nbsp;<a href="#" ng-click="ctrl.editjob(joblist.jobname)"> Edit</a>   </td>
-  </tr>
-  </table>
 </div>
 </body>
 </html>

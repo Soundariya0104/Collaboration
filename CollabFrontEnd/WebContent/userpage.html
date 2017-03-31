@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container">
+		<div class="row">
+			<h4 class="page-header">User Profile</h4>
+			<div class="col-md-4">
+				<h2>${msg}</h2>
+				<div class="col-md-10 col-lg-10 " align="center">
+					<!--         <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" style="height:270px;width:100% "class="img-circle img-responsive">  -->
+				</div>
+
+			</div>
+			<div class="col-md-12">
+				<h3>Your details {{currentUser.username }}!!</h3>
+				<div class=" col-md-9 col-lg-9 ">
+					<table class="table table-user-information">
+						<tbody>
+						<col width="200">
+						<col width="200">
+						<tr>
+							<td><span class="glyphicon glyphicon-asterisk text-primary"></span>&nbsp;&nbsp;First Name
+							</td>
+							<td>:&nbsp;&nbsp; {{currentUser.firstname }}</td>
+						</tr>
+						<tr>
+							<td><span class="glyphicon glyphicon-phone text-primary"></span>&nbsp;&nbsp;Last Name
+							</td>
+							<td>:&nbsp;&nbsp; {{currentUser.lastname }}</td>
+						</tr>
+
+						<tr>
+							<td><span class="glyphicon glyphicon-asterisk text-primary"></span>&nbsp;&nbsp;Username
+							</td>
+							<td>:&nbsp;&nbsp; {{currentUser.username }}</td>
+						</tr>
+						<tr>
+							<td><span class="glyphicon glyphicon-phone text-primary"></span>&nbsp;&nbsp;Mobile
+							</td>
+							<td>:&nbsp;&nbsp; {{currentUser.mobile }}</td>
+						</tr>
+
+						<tr>
+							<td><span class="glyphicon glyphicon-envelope text-primary"></span>&nbsp;&nbsp;Email
+								Id</td>
+							<td>:&nbsp;&nbsp; {{currentUser.emailId }}</td>
+						</tr>
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

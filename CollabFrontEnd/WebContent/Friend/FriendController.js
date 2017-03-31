@@ -88,21 +88,18 @@ app.controller('FriendController', ['UserService','$scope', 'FriendService','$lo
         	  FriendService.acceptfriend(username)
         	  .then( function(){
         		
-                   	 $location.path('/viewallfriend');
+                   	 $location.path('/viewafriend');
              }
-            
-        			  
+             
         			  );
-          };
-
-                  
+          };            
           
          self.unfriend = function(username){
               FriendService.unfriend(username)
                       .then(        			  function(d) {
 
-                    		  console.log('inside unfriend jolly')
-                    			 $location.path('/viewallfriend')
+                    		  console.log('inside unfriend')
+                    			 $location.path('/viewfriend')
                     			 self.fetchAllFriends},
                       
                               function(errResponse){
